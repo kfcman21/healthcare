@@ -58,6 +58,79 @@ if (btnThemeToggle) {
     }
   })
 }
+}
+
+// ==========================================
+// 🌐 다국어 지원 (i18n: 한국어 / 日本語) 시스템
+// ==========================================
+const btnLangToggle = document.getElementById('btn-lang-toggle')
+const langLabel = document.getElementById('lang-label')
+
+const i18nDict = {
+  ko: {
+    dashboard: '대시보드',
+    visits: '방문 일지',
+    inventory: '의약품 관리',
+    protected: '요보호 학생',
+    students: '전교생 명단',
+    statistics: '종합 통계',
+    userRole: '보건 담당자',
+    exportExcel: '전체 엑셀 저장'
+  },
+  jp: {
+    dashboard: 'ダッシュボード',
+    visits: '保健室来室記録',
+    inventory: '医薬品・備品管理',
+    protected: '要配慮児童・生徒',
+    students: '全校生徒名簿',
+    statistics: '総合統計レポート',
+    userRole: '養護教諭',
+    exportExcel: '全体Excel保存'
+  }
+}
+
+let currentLang = localStorage.getItem('lang') || 'ko'
+
+function applyLanguage(lang) {
+  currentLang = lang
+  localStorage.setItem('lang', lang)
+  if (langLabel) langLabel.textContent = lang.toUpperCase()
+  
+  // 메뉴 항목 언어 갱신
+  const menuDashboard = document.querySelector('[data-tab="dashboard"] .menu-label')
+  const menuVisits = document.querySelector('[data-tab="visits"] .menu-label')
+  const menuInventory = document.querySelector('[data-tab="inventory"] .menu-label')
+  const menuProtected = document.querySelector('[data-tab="protected"] .menu-label')
+  const menuStudents = document.querySelector('[data-tab="students"] .menu-label')
+  const menuStatistics = document.querySelector('[data-tab="statistics"] .menu-label')
+  const userRoleEl = document.querySelector('.user-name')
+  const exportBtnEl = document.getElementById('btn-export-all-excel')
+
+  if (menuDashboard) menuDashboard.textContent = i18nDict[lang].dashboard
+  if (menuVisits) menuVisits.textContent = i18nDict[lang].visits
+  if (menuInventory) menuInventory.textContent = i18nDict[lang].inventory
+  if (menuProtected) menuProtected.textContent = i18nDict[lang].protected
+  if (menuStudents) menuStudents.textContent = i18nDict[lang].students
+  if (menuStatistics) menuStatistics.textContent = i18nDict[lang].statistics
+  if (userRoleEl) userRoleEl.textContent = i18nDict[lang].userRole
+  if (exportBtnEl) exportBtnEl.innerHTML = `<span class="btn-icon">📥</span> ${i18nDict[lang].exportExcel}`
+
+  // 현재 활성화된 탭 타이틀 변경
+  const activeTabBtn = document.querySelector('.menu-item.active .menu-label')
+  if (activeTabBtn && pageTitle) {
+    pageTitle.textContent = activeTabBtn.textContent
+  }
+}
+
+if (btnLangToggle) {
+  btnLangToggle.addEventListener('click', () => {
+    const nextLang = currentLang === 'ko' ? 'jp' : 'ko'
+    applyLanguage(nextLang)
+  })
+}
+
+// 초기 언어 적용
+applyLanguage(currentLang)
 
 // 1. 탭 네비게이션 제어
 const tabButtons = document.querySelectorAll('.menu-item')
