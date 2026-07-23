@@ -102,6 +102,77 @@ const i18nDict = {
   }
 }
 
+const bodyPartDict = {
+  ko: {
+    modalTitle: '🧍‍♂️ 신체 부위 인터랙티브 구조도 선택',
+    modalDesc: '외상 및 통증이 발생한 인체 신체 부위를 직접 클릭하세요.',
+    refCaption: '🦴 실제 골격 참고도',
+    viewFullChart: '전체 골격표 크게 보기',
+    selectedPartsLabel: '선택된 신체 부위:',
+    noPartsSelected: '선택된 부위 없음',
+    btnReset: '초기화',
+    btnApply: '입력 폼에 적용',
+    subPanelTitle: '세부 부위 선택',
+    btnOpenBodyMap: '🧍‍♂️ 인체 구조도 선택',
+    parts: {
+      head: '두부 (머리)',
+      face: '안구 / 얼굴',
+      neck: '경부 (목)',
+      shoulder_l: '어깨(좌)',
+      shoulder_r: '어깨(우)',
+      arm_l: '상완(좌)',
+      arm_r: '상완(우)',
+      forearm_l: '하완(좌)',
+      forearm_r: '하완(우)',
+      chest: '흉부 (가슴)',
+      abdomen: '복부 (배)',
+      back: '등 / 허리',
+      thigh_l: '대퇴(좌)',
+      thigh_r: '대퇴(우)',
+      knee_l: '무릎(좌)',
+      knee_r: '무릎(우)',
+      hand_l_sub: '손(좌) ▾',
+      hand_r_sub: '손(우) ▾',
+      foot_l_sub: '족부(좌) ▾',
+      foot_r_sub: '족부(우) ▾'
+    }
+  },
+  jp: {
+    modalTitle: '🧍‍♂️ 身体部位インタラクティブ構造図選択',
+    modalDesc: '負傷・痛みの発生した身体部位を直接クリックしてください。',
+    refCaption: '🦴 実際の骨格参考図',
+    viewFullChart: '全体骨格図を拡大表示',
+    selectedPartsLabel: '選択された身体部位:',
+    noPartsSelected: '選択された部位なし',
+    btnReset: 'リセット',
+    btnApply: '入力フォームに適用',
+    subPanelTitle: '詳細部位の選択',
+    btnOpenBodyMap: '🧍‍♂️ 身体構造図選択',
+    parts: {
+      head: '頭部 (頭)',
+      face: '顔・目',
+      neck: '頸部 (首)',
+      shoulder_l: '肩(左)',
+      shoulder_r: '肩(右)',
+      arm_l: '上腕(左)',
+      arm_r: '上腕(右)',
+      forearm_l: '前腕(左)',
+      forearm_r: '前腕(右)',
+      chest: '胸部 (胸)',
+      abdomen: '腹部 (お腹)',
+      back: '背中・腰',
+      thigh_l: '大腿(左)',
+      thigh_r: '大腿(右)',
+      knee_l: '膝(左)',
+      knee_r: '膝(右)',
+      hand_l_sub: '手(左) ▾',
+      hand_r_sub: '手(右) ▾',
+      foot_l_sub: '足部(左) ▾',
+      foot_r_sub: '足部(右) ▾'
+    }
+  }
+}
+
 let currentLang = localStorage.getItem('lang') || 'ko'
 
 function applyLanguage(lang) {
@@ -144,6 +215,38 @@ function applyLanguage(lang) {
   if (modalNeisDropText) modalNeisDropText.innerHTML = i18nDict[lang].modalNeisDropText
   if (modalNeisDropHint) modalNeisDropHint.textContent = i18nDict[lang].modalNeisDropHint
   if (btnTextNeisSampleModal) btnTextNeisSampleModal.textContent = i18nDict[lang].btnTextNeisSampleModal
+
+  // 🧍‍♂️ 인체 구조도 모달 텍스트 및 신체 부위 버튼 다국어 적용
+  const modalBodyMapTitle = document.getElementById('modal-body-map-title')
+  const modalBodyMapDesc = document.getElementById('modal-body-map-desc')
+  const bodyRefCaption = document.getElementById('body-ref-caption')
+  const btnViewFullChart = document.getElementById('btn-view-full-chart')
+  const lblSelectedParts = document.getElementById('lbl-selected-parts')
+  const btnResetBodyMap = document.getElementById('btn-reset-body-map')
+  const btnApplyBodyMap = document.getElementById('btn-apply-body-map')
+  const btnOpenBodyMapSpan = document.querySelector('#btn-open-body-map span:last-child')
+
+  if (modalBodyMapTitle) modalBodyMapTitle.textContent = bodyPartDict[lang].modalTitle
+  if (modalBodyMapDesc) modalBodyMapDesc.textContent = bodyPartDict[lang].modalDesc
+  if (bodyRefCaption) bodyRefCaption.textContent = bodyPartDict[lang].refCaption
+  if (btnViewFullChart) btnViewFullChart.textContent = bodyPartDict[lang].viewFullChart
+  if (lblSelectedParts) lblSelectedParts.textContent = bodyPartDict[lang].selectedPartsLabel
+  if (btnResetBodyMap) btnResetBodyMap.textContent = bodyPartDict[lang].btnReset
+  if (btnApplyBodyMap) btnApplyBodyMap.textContent = bodyPartDict[lang].btnApply
+  if (btnOpenBodyMapSpan) btnOpenBodyMapSpan.textContent = bodyPartDict[lang].btnOpenBodyMap
+
+  // 인체 부위 버튼 텍스트 변경
+  const mapPointBtns = document.querySelectorAll('.map-point[data-part-key]')
+  mapPointBtns.forEach(btn => {
+    const key = btn.getAttribute('data-part-key')
+    if (key && bodyPartDict[lang].parts[key]) {
+      const newPartName = bodyPartDict[lang].parts[key]
+      btn.textContent = newPartName
+      if (!btn.classList.contains('has-sub')) {
+        btn.setAttribute('data-part', newPartName)
+      }
+    }
+  })
 
   // 현재 활성화된 탭 타이틀 변경
   const activeTabBtn = document.querySelector('.menu-item.active .menu-label')
@@ -1897,19 +2000,28 @@ function initBodyMapModule() {
   }
 
   // 손/발 세부 부위 정의 (하위 상세 메뉴) - 실제 골격계 참고표에서 발췌한 부위별 상세 이미지 포함
-  const subGroupDefs = {
-    'hand-l': { label: '손(좌)', image: bodyRefHandLeft, parts: ['손목(좌)', '손등(좌)', '손바닥(좌)', '엄지손가락(좌)', '검지손가락(좌)', '중지손가락(좌)', '약지손가락(좌)', '소지손가락(좌)'] },
-    'hand-r': { label: '손(우)', image: bodyRefHandRight, parts: ['손목(우)', '손등(우)', '손바닥(우)', '엄지손가락(우)', '검지손가락(우)', '중지손가락(우)', '약지손가락(우)', '소지손가락(우)'] },
-    'foot-l': { label: '족부(좌)', image: bodyRefFootLeft, parts: ['발목(좌)', '발등(좌)', '발바닥(좌)', '발뒤꿈치(좌)', '엄지발가락(좌)', '검지발가락(좌)', '중지발가락(좌)', '약지발가락(좌)', '소지발가락(좌)'] },
-    'foot-r': { label: '족부(우)', image: bodyRefFootRight, parts: ['발목(우)', '발등(우)', '발바닥(우)', '발뒤꿈치(우)', '엄지발가락(우)', '검지발가락(우)', '중지발가락(우)', '약지발가락(우)', '소지발가락(우)'] }
+  const subGroupDefsAll = {
+    ko: {
+      'hand-l': { label: '손(좌)', image: bodyRefHandLeft, parts: ['손목(좌)', '손등(좌)', '손바닥(좌)', '엄지손가락(좌)', '검지손가락(좌)', '중지손가락(좌)', '약지손가락(좌)', '소지손가락(좌)'] },
+      'hand-r': { label: '손(우)', image: bodyRefHandRight, parts: ['손목(우)', '손등(우)', '손바닥(우)', '엄지손가락(우)', '검지손가락(우)', '중지손가락(우)', '약지손가락(우)', '소지손가락(우)'] },
+      'foot-l': { label: '족부(좌)', image: bodyRefFootLeft, parts: ['발목(좌)', '발등(좌)', '발바닥(좌)', '발뒤꿈치(좌)', '엄지발가락(좌)', '검지발가락(좌)', '중지발가락(좌)', '약지발가락(좌)', '소지발가락(좌)'] },
+      'foot-r': { label: '족부(우)', image: bodyRefFootRight, parts: ['발목(우)', '발등(우)', '발바닥(우)', '발뒤꿈치(우)', '엄지발가락(우)', '검지발가락(우)', '중지발가락(우)', '약지발가락(우)', '소지발가락(우)'] }
+    },
+    jp: {
+      'hand-l': { label: '手(左)', image: bodyRefHandLeft, parts: ['手首(左)', '手の甲(左)', '手のひら(左)', '親指(左)', '人差し指(左)', '中指(左)', '薬指(左)', '小指(左)'] },
+      'hand-r': { label: '手(右)', image: bodyRefHandRight, parts: ['手首(右)', '手の甲(右)', '手のひら(右)', '親指(右)', '人差し指(右)', '中指(右)', '薬指(右)', '小指(右)'] },
+      'foot-l': { label: '足部(左)', image: bodyRefFootLeft, parts: ['足首(左)', '足の甲(左)', '足の裏(左)', 'かかと(左)', '足の親指(左)', '足の人差し指(左)', '足の中指(左)', '足の薬指(左)', '足の小指(左)'] },
+      'foot-r': { label: '足部(右)', image: bodyRefFootRight, parts: ['足首(右)', '足の甲(右)', '足の裏(右)', 'かかと(右)', '足의親指(右)', '足の人差し指(右)', '足の中指(右)', '足の薬指(右)', '足の小指(右)'] }
+    }
   }
 
   let selectedParts = new Set()
   let activeSubGroup = null
 
   const updateDisplay = () => {
+    const lang = localStorage.getItem('lang') || 'ko'
     if (selectedParts.size === 0) {
-      displayTags.textContent = '선택된 부위 없음'
+      displayTags.textContent = bodyPartDict[lang].noPartsSelected
     } else {
       displayTags.textContent = Array.from(selectedParts).join(', ')
     }
@@ -1917,9 +2029,12 @@ function initBodyMapModule() {
 
   // 특정 서브그룹(손/발)에 세부 부위가 하나라도 선택되어 있으면 상위 버튼도 강조 표시
   const syncSubGroupButtonState = (groupKey) => {
+    const lang = localStorage.getItem('lang') || 'ko'
+    const subDefs = subGroupDefsAll[lang] || subGroupDefsAll['ko']
     const groupBtn = document.querySelector(`.map-point[data-subgroup="${groupKey}"]`)
     if (!groupBtn) return
-    const def = subGroupDefs[groupKey]
+    const def = subDefs[groupKey]
+    if (!def) return
     const hasAny = def.parts.some(p => selectedParts.has(p))
     groupBtn.classList.toggle('selected', hasAny)
   }
@@ -1930,11 +2045,13 @@ function initBodyMapModule() {
   }
 
   const openSubPanel = (groupKey) => {
-    const def = subGroupDefs[groupKey]
+    const lang = localStorage.getItem('lang') || 'ko'
+    const subDefs = subGroupDefsAll[lang] || subGroupDefsAll['ko']
+    const def = subDefs[groupKey]
     if (!def || !subPanel || !subPanelChipRow) return
 
     activeSubGroup = groupKey
-    subPanelTitle.textContent = `${def.label} 세부 부위 선택 (복수 선택 가능)`
+    subPanelTitle.textContent = `${def.label} ${bodyPartDict[lang].subPanelTitle}`
     if (subPanelImg) subPanelImg.src = def.image
     subPanelChipRow.innerHTML = ''
 

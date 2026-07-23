@@ -953,11 +953,11 @@
     <div id="modal-body-map" class="modal-overlay">
       <div class="modal-content glass animate-pop modal-lg">
         <div class="modal-header">
-          <h3>🧍‍♂️ 신체 부위 인터랙티브 구조도 선택</h3>
+          <h3 id="modal-body-map-title">🧍‍♂️ 신체 부위 인터랙티브 구조도 선택</h3>
           <button class="close-btn" id="btn-close-body-map">×</button>
         </div>
         <div class="modal-body">
-          <p class="body-map-instruction">외상 및 통증이 발생한 인체 신체 부위를 직접 클릭하세요.</p>
+          <p class="body-map-instruction" id="modal-body-map-desc">외상 및 통증이 발생한 인체 신체 부위를 직접 클릭하세요.</p>
           <div class="body-map-container">
           <div class="body-map-visual-row">
             <!-- 대화형 인체 그래픽 영역 (전신 정면도, 실제 인체 비율 기반 SVG) -->
@@ -996,28 +996,28 @@
                 <ellipse class="body-part-shape" cx="182" cy="400" rx="22" ry="12" />
               </svg>
 
-              <button type="button" class="map-point head" data-part="두부(머리)">두부 (머리)</button>
-              <button type="button" class="map-point face" data-part="안구/얼굴">안구 / 얼굴</button>
-              <button type="button" class="map-point neck" data-part="경부(목)">경부 (목)</button>
-              <button type="button" class="map-point shoulder-l" data-part="어깨(좌)">어깨(좌)</button>
-              <button type="button" class="map-point shoulder-r" data-part="어깨(우)">어깨(우)</button>
-              <button type="button" class="map-point arm-l" data-part="상완(좌)">상완(좌)</button>
-              <button type="button" class="map-point arm-r" data-part="상완(우)">상완(우)</button>
-              <button type="button" class="map-point forearm-l" data-part="하완(좌)">하완(좌)</button>
-              <button type="button" class="map-point forearm-r" data-part="하완(우)">하완(우)</button>
-              <button type="button" class="map-point chest" data-part="흉부/가슴">흉부 (가슴)</button>
-              <button type="button" class="map-point abdomen" data-part="복부">복부 (배)</button>
-              <button type="button" class="map-point back" data-part="배부(등/허리)">등 / 허리</button>
-              <button type="button" class="map-point thigh-l" data-part="대퇴(좌)">대퇴(좌)</button>
-              <button type="button" class="map-point thigh-r" data-part="대퇴(우)">대퇴(우)</button>
-              <button type="button" class="map-point knee-l" data-part="무릎(좌)">무릎(좌)</button>
-              <button type="button" class="map-point knee-r" data-part="무릎(우)">무릎(우)</button>
+              <button type="button" class="map-point head" data-part-key="head" data-part="두부(머리)">두부 (머리)</button>
+              <button type="button" class="map-point face" data-part-key="face" data-part="안구/얼굴">안구 / 얼굴</button>
+              <button type="button" class="map-point neck" data-part-key="neck" data-part="경부(목)">경부 (목)</button>
+              <button type="button" class="map-point shoulder-l" data-part-key="shoulder_l" data-part="어깨(좌)">어깨(좌)</button>
+              <button type="button" class="map-point shoulder-r" data-part-key="shoulder_r" data-part="어깨(우)">어깨(우)</button>
+              <button type="button" class="map-point arm-l" data-part-key="arm_l" data-part="상완(좌)">상완(좌)</button>
+              <button type="button" class="map-point arm-r" data-part-key="arm_r" data-part="상완(우)">상완(우)</button>
+              <button type="button" class="map-point forearm-l" data-part-key="forearm_l" data-part="하완(좌)">하완(좌)</button>
+              <button type="button" class="map-point forearm-r" data-part-key="forearm_r" data-part="하완(우)">하완(우)</button>
+              <button type="button" class="map-point chest" data-part-key="chest" data-part="흉부/가슴">흉부 (가슴)</button>
+              <button type="button" class="map-point abdomen" data-part-key="abdomen" data-part="복부">복부 (배)</button>
+              <button type="button" class="map-point back" data-part-key="back" data-part="배부(등/허리)">등 / 허리</button>
+              <button type="button" class="map-point thigh-l" data-part-key="thigh_l" data-part="대퇴(좌)">대퇴(좌)</button>
+              <button type="button" class="map-point thigh-r" data-part-key="thigh_r" data-part="대퇴(우)">대퇴(우)</button>
+              <button type="button" class="map-point knee-l" data-part-key="knee_l" data-part="무릎(좌)">무릎(좌)</button>
+              <button type="button" class="map-point knee-r" data-part-key="knee_r" data-part="무릎(우)">무릎(우)</button>
 
               <!-- 손/발은 세부 부위가 있으므로 하위 상세 메뉴(서브패널)를 여는 버튼으로 구성 -->
-              <button type="button" class="map-point hand-l has-sub" data-subgroup="hand-l">손(좌) ▾</button>
-              <button type="button" class="map-point hand-r has-sub" data-subgroup="hand-r">손(우) ▾</button>
-              <button type="button" class="map-point foot-l has-sub" data-subgroup="foot-l">족부(좌) ▾</button>
-              <button type="button" class="map-point foot-r has-sub" data-subgroup="foot-r">족부(우) ▾</button>
+              <button type="button" class="map-point hand-l has-sub" data-part-key="hand_l_sub" data-subgroup="hand-l">손(좌) ▾</button>
+              <button type="button" class="map-point hand-r has-sub" data-part-key="hand_r_sub" data-subgroup="hand-r">손(우) ▾</button>
+              <button type="button" class="map-point foot-l has-sub" data-part-key="foot_l_sub" data-subgroup="foot-l">족부(좌) ▾</button>
+              <button type="button" class="map-point foot-r has-sub" data-part-key="foot_r_sub" data-subgroup="foot-r">족부(우) ▾</button>
             </div>
 
             <!-- 실제 골격계 참고 이미지 (첨부 자료 기반) -->
