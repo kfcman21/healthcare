@@ -74,6 +74,20 @@ async function runBuild() {
         ],
         icon: "public/favicon.svg"
       },
+      mac: {
+        target: [
+          {
+            target: "dmg",
+            arch: ["x64", "arm64"]
+          },
+          {
+            target: "zip",
+            arch: ["x64", "arm64"]
+          }
+        ],
+        icon: "public/favicon.svg",
+        category: "public.app-category.healthcare-and-fitness"
+      },
       nsis: {
         oneClick: false,
         allowToChangeInstallationDirectory: true,
@@ -90,8 +104,8 @@ async function runBuild() {
     const destPath = path.join(finalDistDir, file)
     if (fs.statSync(srcPath).isFile()) {
       fs.copyFileSync(srcPath, destPath)
-      console.log(`  -> 설치파일 복사: ${file}`)
-    } else if (file === 'win-unpacked') {
+      console.log(`  -> 설치파일/압축파일 복사: ${file}`)
+    } else if (file === 'win-unpacked' || file.startsWith('mac')) {
       fs.cpSync(srcPath, destPath, { recursive: true })
       console.log(`  -> 실행 폴더 복사: ${file}`)
     }
@@ -99,7 +113,7 @@ async function runBuild() {
 
   const migrationsSrc = path.join(rootDir, 'supabase', 'migrations')
   const migrationsDestInUnpacked = path.join(finalDistDir, 'win-unpacked', 'resources', 'supabase', 'migrations')
-  if (fs.existsSync(migrationsSrc)) {
+  if (fs.existsSync(migrationsSrc) && fs.existsSync(path.join(finalDistDir, 'win-unpacked'))) {
     fs.mkdirSync(migrationsDestInUnpacked, { recursive: true })
     fs.cpSync(migrationsSrc, migrationsDestInUnpacked, { recursive: true })
     console.log(`  -> 마이그레이션 SQL 리소스 포함 완료`)
