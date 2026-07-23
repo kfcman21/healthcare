@@ -588,15 +588,15 @@
             <div class="panel glass flex-full">
               <div class="panel-header-search flex-wrap-header">
                 <div class="header-left-title">
-                  <h3 class="section-title">전교생 명단 (나이스 NEIS 일괄등록)</h3>
-                  <span class="sub-title-text">학생명을 검색하여 과거 방문 이력 및 요보호 여부를 빠르게 관리합니다.</span>
+                  <h3 class="section-title" id="students-section-title">전교생 명단 (나이스 NEIS 일괄등록)</h3>
+                  <span class="sub-title-text" id="students-section-subtitle">학생명을 검색하여 과거 방문 이력 및 요보호 여부를 빠르게 관리합니다.</span>
                 </div>
                 <div class="action-btn-group">
-                  <button class="btn btn-secondary sm-btn" id="btn-open-neis-modal" title="나이스(NEIS) 다운로드 엑셀 파일로 전교생 명단을 일괄 등록합니다.">
-                    <span>📂</span> 나이스 엑셀 일괄등록
+                  <button class="btn btn-secondary sm-btn" id="btn-open-neis-modal" title="엑셀 파일로 전교생 명단을 일괄 등록합니다.">
+                    <span>📂</span> <span id="btn-text-open-neis">나이스 엑셀 일괄등록</span>
                   </button>
                   <button class="btn btn-outline sm-btn" id="btn-download-neis-sample">
-                    <span>📥</span> 나이스 샘플서식
+                    <span>📥</span> <span id="btn-text-neis-sample">나이스 샘플서식</span>
                   </button>
                   <button class="btn btn-danger sm-btn" id="btn-clear-students">
                     <span>🗑️</span> 명단 전체삭제
@@ -852,18 +852,18 @@
     <div id="modal-neis-student" class="modal-overlay">
       <div class="modal-content glass animate-pop modal-lg">
         <div class="modal-header">
-          <h3>👨‍🎓 나이스(NEIS) 전교생 명단 일괄 등록</h3>
+          <h3 id="modal-neis-title">👨‍🎓 나이스(NEIS) 전교생 명단 일괄 등록</h3>
           <button class="close-btn" id="btn-close-neis-modal">×</button>
         </div>
         <div class="modal-body">
           <div class="bulk-upload-zone" id="drop-zone-neis">
             <div class="drop-icon">🏫</div>
-            <p class="drop-text"><strong>나이스(NEIS)에서 다운로드한 엑셀(.xlsx) 파일</strong>을 드래그하거나 선택하세요.</p>
-            <span class="drop-hint">(필수 컬럼: 학년, 반, 번호, 성명/학생명, 성별)</span>
+            <p class="drop-text" id="modal-neis-drop-text"><strong>나이스(NEIS)에서 다운로드한 엑셀(.xlsx) 파일</strong>을 드래그하거나 선택하세요.</p>
+            <span class="drop-hint" id="modal-neis-drop-hint">(필수 컬럼: 학년, 반, 번호, 성명/학생명, 성별)</span>
             <input type="file" id="input-neis-file" accept=".xlsx, .xls, .csv" class="hidden-file-input" />
             <div class="bulk-zone-actions">
               <button class="btn btn-secondary sm-btn" id="btn-select-neis-file">파일 선택</button>
-              <button class="btn btn-outline sm-btn" id="btn-download-neis-sample-modal">📥 나이스 샘플 양식</button>
+              <button class="btn btn-outline sm-btn" id="btn-download-neis-sample-modal">📥 <span id="btn-text-neis-sample-modal">나이스 샘플 양식</span></button>
             </div>
           </div>
 

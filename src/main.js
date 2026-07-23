@@ -74,7 +74,14 @@ const i18nDict = {
     students: '전교생 명단',
     statistics: '종합 통계',
     userRole: '보건 담당자',
-    exportExcel: '전체 엑셀 저장'
+    exportExcel: '전체 엑셀 저장',
+    studentsSectionTitle: '전교생 명단 (나이스 NEIS 일괄등록)',
+    btnTextOpenNeis: '나이스 엑셀 일괄등록',
+    btnTextNeisSample: '나이스 샘플서식',
+    modalNeisTitle: '👨‍🎓 나이스(NEIS) 전교생 명단 일괄 등록',
+    modalNeisDropText: '<strong>나이스(NEIS)에서 다운로드한 엑셀(.xlsx) 파일</strong>을 드래그하거나 선택하세요.',
+    modalNeisDropHint: '(필수 컬럼: 학년, 반, 번호, 성명/학생명, 성별)',
+    btnTextNeisSampleModal: '나이스 샘플 양식'
   },
   jp: {
     dashboard: 'ダッシュボード',
@@ -84,7 +91,14 @@ const i18nDict = {
     students: '全校生徒名簿',
     statistics: '総合統計レポート',
     userRole: '養護教諭',
-    exportExcel: '全体Excel保存'
+    exportExcel: '全体Excel保存',
+    studentsSectionTitle: '全校生徒名簿 (Excel一括登録)',
+    btnTextOpenNeis: 'Excel一括登録',
+    btnTextNeisSample: 'サンプル様式',
+    modalNeisTitle: '👨‍🎓 生徒名簿 Excel一括登録',
+    modalNeisDropText: '<strong>Excel(.xlsx)ファイル</strong>をドラッグ＆ドロップまたは選択してください。',
+    modalNeisDropHint: '(必須項目: 学年, 組, 出席番号, 氏名, 性別)',
+    btnTextNeisSampleModal: 'サンプル様式'
   }
 }
 
@@ -113,6 +127,23 @@ function applyLanguage(lang) {
   if (menuStatistics) menuStatistics.textContent = i18nDict[lang].statistics
   if (userRoleEl) userRoleEl.textContent = i18nDict[lang].userRole
   if (exportBtnEl) exportBtnEl.innerHTML = `<span class="btn-icon">📥</span> ${i18nDict[lang].exportExcel}`
+
+  // NEIS 문구 갱신 (일본어 모드 시 NEIS 단어 숨김 및 일반 Excel로 대체)
+  const studentsSecTitle = document.getElementById('students-section-title')
+  const btnTextOpenNeis = document.getElementById('btn-text-open-neis')
+  const btnTextNeisSample = document.getElementById('btn-text-neis-sample')
+  const modalNeisTitle = document.getElementById('modal-neis-title')
+  const modalNeisDropText = document.getElementById('modal-neis-drop-text')
+  const modalNeisDropHint = document.getElementById('modal-neis-drop-hint')
+  const btnTextNeisSampleModal = document.getElementById('btn-text-neis-sample-modal')
+
+  if (studentsSecTitle) studentsSecTitle.textContent = i18nDict[lang].studentsSectionTitle
+  if (btnTextOpenNeis) btnTextOpenNeis.textContent = i18nDict[lang].btnTextOpenNeis
+  if (btnTextNeisSample) btnTextNeisSample.textContent = i18nDict[lang].btnTextNeisSample
+  if (modalNeisTitle) modalNeisTitle.textContent = i18nDict[lang].modalNeisTitle
+  if (modalNeisDropText) modalNeisDropText.innerHTML = i18nDict[lang].modalNeisDropText
+  if (modalNeisDropHint) modalNeisDropHint.textContent = i18nDict[lang].modalNeisDropHint
+  if (btnTextNeisSampleModal) btnTextNeisSampleModal.textContent = i18nDict[lang].btnTextNeisSampleModal
 
   // 현재 활성화된 탭 타이틀 변경
   const activeTabBtn = document.querySelector('.menu-item.active .menu-label')
