@@ -54,11 +54,11 @@
         
         <div class="sidebar-footer">
           <button class="btn btn-outline sm-btn full-width-btn mb-2" id="btn-open-db-share" title="2인 배치 학교 및 백업을 위한 로컬 DB 공유/백업 설정">
-            <span>💾</span> DB 백업 / 2인 공유
+            <span>💾</span> <span data-i18n="dbBackupShare">DB 백업 / 2인 공유</span>
           </button>
           <div class="db-status-badge">
             <span class="status-indicator online"></span>
-            <span class="status-text">SQLite 로컬 DB 암호화 연동</span>
+            <span class="status-text" data-i18n="dbStatusText">SQLite 로컬 DB 암호화 연동</span>
           </div>
         </div>
       </aside>
@@ -100,7 +100,7 @@
               <!-- 요약 카드 1 -->
               <div class="summary-card glass">
                 <div class="card-info">
-                  <span class="card-label">오늘 보건실 방문</span>
+                  <span class="card-label" data-i18n="dashVisitsLabel">오늘 보건실 방문</span>
                   <h3 class="card-value" id="dash-today-visits">0 명</h3>
                 </div>
                 <div class="card-icon blue">📝</div>
@@ -108,7 +108,7 @@
               <!-- 요약 카드 2 -->
               <div class="summary-card glass">
                 <div class="card-info">
-                  <span class="card-label">품절/부족 의약품</span>
+                  <span class="card-label" data-i18n="dashLowStockLabel">품절/부족 의약품</span>
                   <h3 class="card-value" id="dash-low-stock">0 건</h3>
                 </div>
                 <div class="card-icon red">💊</div>
@@ -116,7 +116,7 @@
               <!-- 요약 카드 3 -->
               <div class="summary-card glass">
                 <div class="card-info">
-                  <span class="card-label">관리 대상 요보호 학생</span>
+                  <span class="card-label" data-i18n="dashProtectedLabel">관리 대상 요보호 학생</span>
                   <h3 class="card-value" id="dash-protected-count">0 명</h3>
                 </div>
                 <div class="card-icon yellow">🚨</div>
@@ -128,7 +128,7 @@
               <!-- 📈 추가: 최근 7일 방문자 추이 그래프 -->
               <div class="detail-panel glass flex-2">
                 <div class="panel-header">
-                  <h4 class="panel-title">최근 7일간 방문자 통계 추이</h4>
+                  <h4 class="panel-title" data-i18n="dashChartTitle">최근 7일간 방문자 통계 추이</h4>
                 </div>
                 <div class="chart-container">
                   <canvas id="chart-visits-trend"></canvas>
@@ -138,7 +138,7 @@
               <!-- 알림 및 할일 목록 -->
               <div class="detail-panel glass flex-1">
                 <div class="panel-header">
-                  <h4 class="panel-title">알림 및 업무 체크</h4>
+                  <h4 class="panel-title" data-i18n="dashTodoTitle">알림 및 업무 체크</h4>
                 </div>
                 <ul class="todo-list" id="dash-todo-list">
                   <li class="todo-item urgent">

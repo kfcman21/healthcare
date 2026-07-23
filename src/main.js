@@ -199,6 +199,15 @@ function applyLanguage(lang) {
   if (userRoleEl) userRoleEl.textContent = i18nDict[lang].userRole
   if (exportBtnEl) exportBtnEl.innerHTML = `<span class="btn-icon">📥</span> ${i18nDict[lang].exportExcel}`
 
+  // 범용 data-i18n 요소 자동 업데이트
+  const i18nElements = document.querySelectorAll('[data-i18n]')
+  i18nElements.forEach(el => {
+    const key = el.getAttribute('data-i18n')
+    if (key && i18nDict[lang] && i18nDict[lang][key]) {
+      el.textContent = i18nDict[lang][key]
+    }
+  })
+
   // NEIS 문구 갱신 (일본어 모드 시 NEIS 단어 숨김 및 일반 Excel로 대체)
   const studentsSecTitle = document.getElementById('students-section-title')
   const btnTextOpenNeis = document.getElementById('btn-text-open-neis')

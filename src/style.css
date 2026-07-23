@@ -37,10 +37,10 @@
   --muted-gray: #919191;
   --disabled-gray: #9fa1a7;
 
-  /* 텍스트 색상 (다크 모드) */
+  /* 텍스트 색상 (다크 모드 - 어두운 글자색 배제하고 밝은색으로 일괄 설정) */
   --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dark: #0e1726;
+  --text-muted: #cbd5e1;
+  --text-dark: #ffffff;
   --text-white: #ffffff;
 
   /* Nexon 반경(Radius) 스케일 -- 게임 UI 유산의 날카로운 지오메트리 */
@@ -149,6 +149,52 @@ body.light-mode .menu-item:hover {
 
 body.light-mode .menu-item.active {
   color: #000000 !important;      /* Nexon 규칙: 그린 배경 위 블랙 라벨 */
+}
+
+/* 🌙 다크 모드(기본 테마) 가독성 보장 - 검정색/어두운 텍스트 완전 배제 강제 설정 */
+body:not(.light-mode) h1,
+body:not(.light-mode) h2,
+body:not(.light-mode) h3,
+body:not(.light-mode) h4,
+body:not(.light-mode) h5,
+body:not(.light-mode) h6,
+body:not(.light-mode) .section-title,
+body:not(.light-mode) .page-title,
+body:not(.light-mode) .card-value,
+body:not(.light-mode) .sub-title-text,
+body:not(.light-mode) .panel-title,
+body:not(.light-mode) .summary-card h3 {
+  color: #ffffff !important;
+}
+
+body:not(.light-mode) label,
+body:not(.light-mode) .card-label,
+body:not(.light-mode) .drop-hint,
+body:not(.light-mode) .today-date {
+  color: #cbd5e1 !important;
+}
+
+body:not(.light-mode) .data-table th {
+  color: #e2e8f0 !important;
+}
+
+body:not(.light-mode) .data-table td,
+body:not(.light-mode) .todo-text,
+body:not(.light-mode) p {
+  color: #f8fafc !important;
+}
+
+body:not(.light-mode) input,
+body:not(.light-mode) select,
+body:not(.light-mode) textarea {
+  color: #ffffff !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body:not(.light-mode) input::placeholder,
+body:not(.light-mode) textarea::placeholder {
+  color: #94a3b8 !important;
 }
 
 body {
