@@ -1,0 +1,59 @@
+{
+  "name": "healthcare",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist-electron/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/vite/bin/vite.js",
+    "build": "node node_modules/vite/bin/vite.js build",
+    "preview": "node node_modules/vite/bin/vite.js preview",
+    "dist": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
+    "vite": "^8.1.1",
+    "vite-plugin-electron": "^1.1.0",
+    "vite-plugin-electron-renderer": "^1.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "crypto-js": "^4.2.0",
+    "sql.js": "^1.14.1"
+  },
+  "build": {
+    "productName": "스마트 보건실 업무지원 시스템",
+    "appId": "com.healthcare.smartapp",
+    "directories": {
+      "output": "dist_setup"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "supabase/migrations",
+        "to": "supabase/migrations"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/favicon.svg"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "스마트 보건실 업무지원 시스템"
+    }
+  }
+}

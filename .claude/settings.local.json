@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(sed -i 's/rgba\\(13, 148, 136,/rgba\\(0, 222, 90,/g' src/style.css)",
+      "Bash(sed -i 's/rgba\\(0, 120, 212,/rgba\\(0, 222, 90,/g' src/style.css)",
+      "Bash(node node_modules/vite/bin/vite.js build)",
+      "Bash(node node_modules/vite/bin/vite.js preview --port 4173)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4173/)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"vite.js preview\")"
+    ]
+  }
+}
