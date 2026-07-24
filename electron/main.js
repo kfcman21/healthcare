@@ -5,9 +5,12 @@ import initSqlJs from 'sql.js'
 import CryptoJS from 'crypto-js'
 import { fileURLToPath } from 'url'
 
-// ESM 환경에서의 __dirname 대체 정의
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+// ESM 및 번들링 환경에서의 __dirname 안전한 대체 정의
+const __filename = typeof __filename !== 'undefined' ? __filename : (import.meta.url ? fileURLToPath(import.meta.url) : '')
+const __dirname = typeof __dirname !== 'undefined' ? __dirname : (__filename ? path.dirname(__filename) : process.cwd())
+if (typeof globalThis.__dirname === 'undefined') {
+  globalThis.__dirname = __dirname
+}
 
 // 1. 개인정보 보호를 위한 대칭키 암호화 설정
 // (보안 최우선 과제: 실제 서비스에서는 이 암호화 키가 소스코드 내에 노출되지 않도록 OS 환경변수 또는 하드웨어 보안 영역에 저장해야 합니다.)

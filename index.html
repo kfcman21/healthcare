@@ -53,12 +53,12 @@
         </nav>
         
         <div class="sidebar-footer">
-          <button class="btn btn-outline sm-btn full-width-btn mb-2" id="btn-open-db-share" title="2인 배치 학교 및 백업을 위한 로컬 DB 공유/백업 설정">
-            <span>💾</span> <span data-i18n="dbBackupShare">DB 백업 / 2인 공유</span>
+          <button class="btn btn-outline sm-btn full-width-btn mb-2" id="btn-open-db-share" data-i18n-title="titleDbShare" title="2인 배치 학교 및 백업을 위한 로컬 DB 공유/백업 설정">
+            <span>💾</span> <span data-i18n="btnDbShare">DB 백업 / 2인 공유</span>
           </button>
           <div class="db-status-badge">
             <span class="status-indicator online"></span>
-            <span class="status-text" data-i18n="dbStatusText">SQLite 로컬 DB 암호화 연동</span>
+            <span class="status-text" data-i18n="dbStatusBadge">SQLite 로컬 DB 암호화 연동</span>
           </div>
         </div>
       </aside>
@@ -72,15 +72,15 @@
           </div>
           <div class="topbar-right">
             <!-- 📊 전체 데이터 엑셀 내보내기 버튼 -->
-            <button class="btn btn-secondary sm-btn" id="btn-export-all-excel" title="전체 데이터(방문일지, 의약품, 요보호학생)를 엑셀 파일로 다운로드합니다.">
+            <button class="btn btn-secondary sm-btn" id="btn-export-all-excel" data-i18n-title="titleExportAllExcel" title="전체 데이터(방문일지, 의약품, 요보호학생)를 엑셀 파일로 다운로드합니다.">
               <span class="btn-icon">📥</span> 전체 엑셀 저장
             </button>
             <!-- 🌐 언어 선택 (KO / JP) 토글 버튼 -->
-            <button class="btn-lang-toggle btn btn-outline sm-btn" id="btn-lang-toggle" aria-label="언어 전환 버튼">
-              <span class="lang-flag" id="lang-flag">🌐</span> <span id="lang-label">KO</span>
+            <button class="btn-lang-toggle btn btn-outline sm-btn" id="btn-lang-toggle" data-i18n-aria-label="btnLangToggle" aria-label="언어 전환 버튼">
+              🌐 <span id="lang-label">KO</span>
             </button>
             <!-- ☀️/🌙 다크, 라이트 모드 전환 버튼 -->
-            <button class="btn-theme-toggle" id="btn-theme-toggle" aria-label="테마 전환 버튼">
+            <button class="btn-theme-toggle" id="btn-theme-toggle" data-i18n-aria-label="titleThemeToggle" aria-label="테마 전환 버튼">
               <span class="theme-toggle-icon" id="theme-toggle-icon">☀️</span>
             </button>
             <span class="today-date" id="header-today-date">2026년 07월 22일 (수)</span>
@@ -100,8 +100,8 @@
               <!-- 요약 카드 1 -->
               <div class="summary-card glass">
                 <div class="card-info">
-                  <span class="card-label" data-i18n="dashVisitsLabel">오늘 보건실 방문</span>
-                  <h3 class="card-value" id="dash-today-visits">0 명</h3>
+                  <span class="card-label" data-i18n="dashTodayVisitsLabel">오늘 보건실 방문</span>
+                  <h3 class="card-value"><span id="dash-today-visits">0</span> <span class="card-unit" data-i18n="unitPeople">명</span></h3>
                 </div>
                 <div class="card-icon blue">📝</div>
               </div>
@@ -109,15 +109,15 @@
               <div class="summary-card glass">
                 <div class="card-info">
                   <span class="card-label" data-i18n="dashLowStockLabel">품절/부족 의약품</span>
-                  <h3 class="card-value" id="dash-low-stock">0 건</h3>
+                  <h3 class="card-value"><span id="dash-low-stock">0</span> <span class="card-unit" data-i18n="unitCases">건</span></h3>
                 </div>
                 <div class="card-icon red">💊</div>
               </div>
               <!-- 요약 카드 3 -->
               <div class="summary-card glass">
                 <div class="card-info">
-                  <span class="card-label" data-i18n="dashProtectedLabel">관리 대상 요보호 학생</span>
-                  <h3 class="card-value" id="dash-protected-count">0 명</h3>
+                  <span class="card-label" data-i18n="dashProtectedCountLabel">관리 대상 요보호 학생</span>
+                  <h3 class="card-value"><span id="dash-protected-count">0</span> <span class="card-unit" data-i18n="unitPeople">명</span></h3>
                 </div>
                 <div class="card-icon yellow">🚨</div>
               </div>
@@ -128,7 +128,7 @@
               <!-- 📈 추가: 최근 7일 방문자 추이 그래프 -->
               <div class="detail-panel glass flex-2">
                 <div class="panel-header">
-                  <h4 class="panel-title" data-i18n="dashChartTitle">최근 7일간 방문자 통계 추이</h4>
+                  <h4 class="panel-title" data-i18n="dashVisitsTrendTitle">최근 7일간 방문자 통계 추이</h4>
                 </div>
                 <div class="chart-container">
                   <canvas id="chart-visits-trend"></canvas>
@@ -143,15 +143,15 @@
                 <ul class="todo-list" id="dash-todo-list">
                   <li class="todo-item urgent">
                     <span class="todo-icon">⚠️</span>
-                    <span class="todo-text">요보호 학생 응급키트 재점검 필요</span>
+                    <span class="todo-text" data-i18n="todoEmergencyKit">요보호 학생 응급키트 재점검 필요</span>
                   </li>
                   <li class="todo-item warning">
                     <span class="todo-icon">⏳</span>
-                    <span class="todo-text">타이레놀 시럽 유통기한 확인 대상</span>
+                    <span class="todo-text" data-i18n="todoTylenolExpiry">타이레놀 시럽 유통기한 확인 대상</span>
                   </li>
                   <li class="todo-item">
                     <span class="todo-icon">✅</span>
-                    <span class="todo-text">주간 보건일지 마감 완료</span>
+                    <span class="todo-text" data-i18n="todoWeeklyDone">주간 보건일지 마감 완료</span>
                   </li>
                 </ul>
               </div>
@@ -160,23 +160,23 @@
             <!-- 대시보드 하단 섹션: 최근 방문 이력 테이블 -->
             <div class="detail-panel glass flex-full">
               <div class="panel-header">
-                <h4 class="panel-title">최근 보건실 방문 이력</h4>
-                <button class="panel-action-btn" id="btn-go-to-visits">일지 전체보기 →</button>
+                <h4 class="panel-title" data-i18n="dashRecentVisitsTitle">최근 보건실 방문 이력</h4>
+                <button class="panel-action-btn" id="btn-go-to-visits" data-i18n="btnGoToVisits">일지 전체보기 →</button>
               </div>
               <div class="table-responsive">
                 <table class="data-table">
                   <thead>
                     <tr>
-                      <th>방문 시간</th>
-                      <th>대상 학생</th>
-                      <th>증상</th>
-                      <th>처치 내용</th>
+                      <th data-i18n="thVisitTime">방문 시간</th>
+                      <th data-i18n="thTargetStudent">대상 학생</th>
+                      <th data-i18n="thSymptom">증상</th>
+                      <th data-i18n="thTreatment">처치 내용</th>
                     </tr>
                   </thead>
                   <tbody id="dash-recent-visits-table">
                     <!-- 데이터가 동적으로 채워집니다. -->
                     <tr>
-                      <td colspan="4" class="text-center text-muted">등록된 기록이 없습니다.</td>
+                      <td colspan="4" class="text-center text-muted" data-i18n="emptyRecord">등록된 기록이 없습니다.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -189,17 +189,17 @@
             <div class="view-split-layout">
               <!-- 왼쪽: 방문자 등록 폼 -->
               <div class="panel glass flex-1 form-panel-scroll">
-                <h3 class="section-title">방문자 등록 및 세부 처치</h3>
+                <h3 class="section-title" data-i18n="visitRegisterTitle">방문자 등록 및 세부 처치</h3>
                 
                 <!-- 💡 실시간 학생 과거 방문 기록 카드 (이름 입력 시 자동 노출) -->
                 <div class="student-history-card hidden" id="student-past-history-card">
                   <div class="history-card-header">
-                    <span class="history-badge">📋 과거 방문 이력</span>
+                    <span class="history-badge">📋 <span data-i18n="visitHistoryLabel">과거 방문 이력</span></span>
                     <strong id="history-student-info">김철수 (3학년 2반)</strong>
                   </div>
                   <div class="history-card-body">
                     <p id="history-summary-text">과거 총 0회 방문 | 주 증상: -</p>
-                    <span class="history-protected-tag hidden" id="history-protected-tag">🚨 요보호 대상자</span>
+                    <span class="history-protected-tag hidden" id="history-protected-tag">🚨 <span data-i18n="protectedTargetLabel">요보호 대상자</span></span>
                   </div>
                 </div>
 
@@ -207,30 +207,30 @@
                   <!-- 학생 인적사항 -->
                   <div class="form-group row-3">
                     <div>
-                      <label for="visit-grade">학년</label>
+                      <label for="visit-grade" data-i18n="lblGrade">학년</label>
                       <input type="text" id="visit-grade" placeholder="3" required />
                     </div>
                     <div>
-                      <label for="visit-class">반</label>
+                      <label for="visit-class" data-i18n="lblClass">반</label>
                       <input type="text" id="visit-class" placeholder="2" required />
                     </div>
                     <div>
-                      <label for="visit-number">번호</label>
+                      <label for="visit-number" data-i18n="lblNumber">번호</label>
                       <input type="text" id="visit-number" placeholder="15" required />
                     </div>
                   </div>
 
                   <div class="form-group row-2">
                     <div>
-                      <label for="visit-name">학생명 (나이스 연동 자동검색)</label>
-                      <input type="text" id="visit-name" list="datalist-students" placeholder="이름 입력 시 과거이력 자동조회" required />
+                      <label for="visit-name" data-i18n="lblStudentNameSearch">학생명 (나이스 연동 자동검색)</label>
+                      <input type="text" id="visit-name" list="datalist-students" data-i18n-placeholder="phStudentNameSearch" placeholder="이름 입력 시 과거이력 자동조회" required />
                       <datalist id="datalist-students"></datalist>
                     </div>
                     <div>
-                      <label for="visit-gender">성별</label>
+                      <label for="visit-gender" data-i18n="lblGender">성별</label>
                       <select id="visit-gender">
-                        <option value="남">남학생</option>
-                        <option value="여">여학생</option>
+                        <option value="남" data-i18n="optMale">남학생</option>
+                        <option value="여" data-i18n="optFemale">여학생</option>
                       </select>
                     </div>
                   </div>
@@ -238,15 +238,15 @@
                   <!-- ⏱️ 방문시간 및 침실 입/퇴실 시간 -->
                   <div class="form-group row-3">
                     <div>
-                      <label for="visit-time">방문/처치 시간</label>
+                      <label for="visit-time" data-i18n="lblVisitTime">방문/처치 시간</label>
                       <input type="time" id="visit-time" required />
                     </div>
                     <div>
-                      <label for="visit-bed-in">침실 입실시간</label>
+                      <label for="visit-bed-in" data-i18n="lblBedInTime">침실 입실시간</label>
                       <input type="time" id="visit-bed-in" />
                     </div>
                     <div>
-                      <label for="visit-bed-out">침실 퇴실시간</label>
+                      <label for="visit-bed-out" data-i18n="lblBedOutTime">침실 퇴실시간</label>
                       <input type="time" id="visit-bed-out" />
                     </div>
                   </div>
@@ -254,51 +254,51 @@
                   <!-- 🦴 신체부위 명칭 및 인체 구조도 선택 -->
                   <div class="form-group">
                     <div class="label-with-action">
-                      <label for="visit-injury-site">외상/통증 신체 부위</label>
+                      <label for="visit-injury-site" data-i18n="lblInjurySite">외상/통증 신체 부위</label>
                       <button type="button" class="btn btn-outline sm-btn xs-padding" id="btn-open-body-map">
-                        <span>🧍‍♂️</span> 인체 구조도 선택
+                        <span>🧍‍♂️</span> <span data-i18n="btnOpenBodyMap">인체 구조도 선택</span>
                       </button>
                     </div>
-                    <input type="text" id="visit-injury-site" placeholder="예: 상완(좌), 대퇴(우), 족부(좌)" />
+                    <input type="text" id="visit-injury-site" data-i18n-placeholder="phInjurySite" placeholder="예: 상완(좌), 대퇴(우), 족부(좌)" />
                     <!-- 신체부위 간편 칩 -->
                     <div class="body-chips-row">
-                      <button type="button" class="body-chip" data-site="두부(머리)">두부</button>
-                      <button type="button" class="body-chip" data-site="안구/얼굴">얼굴</button>
-                      <button type="button" class="body-chip" data-site="상완(좌)">상완(좌)</button>
-                      <button type="button" class="body-chip" data-site="상완(우)">상완(우)</button>
-                      <button type="button" class="body-chip" data-site="복부">복부</button>
-                      <button type="button" class="body-chip" data-site="대퇴(좌)">대퇴(좌)</button>
-                      <button type="button" class="body-chip" data-site="대퇴(우)">대퇴(우)</button>
-                      <button type="button" class="body-chip" data-site="족부(발)">족부</button>
+                      <button type="button" class="body-chip" data-site="두부(머리)" data-i18n="chipHead">두부</button>
+                      <button type="button" class="body-chip" data-site="안구/얼굴" data-i18n="chipFace">얼굴</button>
+                      <button type="button" class="body-chip" data-site="상완(좌)" data-i18n="chipArmL">상완(좌)</button>
+                      <button type="button" class="body-chip" data-site="상완(우)" data-i18n="chipArmR">상완(우)</button>
+                      <button type="button" class="body-chip" data-site="복부" data-i18n="chipAbdomen">복부</button>
+                      <button type="button" class="body-chip" data-site="대퇴(좌)" data-i18n="chipThighL">대퇴(좌)</button>
+                      <button type="button" class="body-chip" data-site="대퇴(우)" data-i18n="chipThighR">대퇴(우)</button>
+                      <button type="button" class="body-chip" data-site="족부(발)" data-i18n="chipFoot">족부</button>
                     </div>
                   </div>
 
                   <!-- 🩺 활력징후 (Vital Signs) -->
                   <div class="vitals-group-box">
-                    <span class="vitals-box-title">🩺 활력 징후 (Vital Signs) & 통증 척도</span>
+                    <span class="vitals-box-title">🩺 <span data-i18n="lblVitalsBoxTitle">활력 징후 (Vital Signs) & 통증 척도</span></span>
                     <div class="form-group row-4">
                       <div>
-                        <label for="visit-temp">체온(°C)</label>
+                        <label for="visit-temp" data-i18n="lblTemp">체온(°C)</label>
                         <input type="number" id="visit-temp" step="0.1" placeholder="36.5" />
                       </div>
                       <div>
-                        <label for="visit-bp">혈압(mmHg)</label>
+                        <label for="visit-bp" data-i18n="lblBP">혈압(mmHg)</label>
                         <input type="text" id="visit-bp" placeholder="120/80" />
                       </div>
                       <div>
-                        <label for="visit-hr">맥박(bpm)</label>
+                        <label for="visit-hr" data-i18n="lblHR">맥박(bpm)</label>
                         <input type="number" id="visit-hr" placeholder="75" />
                       </div>
                       <div>
-                        <label for="visit-spo2">산소포화도(%)</label>
+                        <label for="visit-spo2" data-i18n="lblSPO2">산소포화도(%)</label>
                         <input type="number" id="visit-spo2" placeholder="98" />
                       </div>
                     </div>
                     <!-- 통증 척도 NPRS 0~10 -->
                     <div class="form-group mt-2">
                       <div class="label-with-action">
-                        <label for="visit-pain-scale">통증 척도 (NPRS 0~10)</label>
-                        <span class="pain-scale-val" id="pain-scale-display">0점 (무통)</span>
+                        <label for="visit-pain-scale" data-i18n="lblPainScale">통증 척도 (NPRS 0~10)</label>
+                        <span class="pain-scale-val" id="pain-scale-display" data-i18n="painScale0">0점 (무통)</span>
                       </div>
                       <input type="range" id="visit-pain-scale" min="0" max="10" value="0" />
                     </div>
@@ -306,20 +306,20 @@
 
                   <!-- 증상 및 처치내용 -->
                   <div class="form-group">
-                    <label for="visit-symptoms">주요 증상</label>
-                    <textarea id="visit-symptoms" rows="2" placeholder="예: 체육시간 중 우측 대퇴부 찰과상 및 두통" required></textarea>
+                    <label for="visit-symptoms" data-i18n="lblSymptoms">주요 증상</label>
+                    <textarea id="visit-symptoms" rows="2" data-i18n-placeholder="phSymptoms" placeholder="예: 체육시간 중 우측 대퇴부 찰과상 및 두통" required></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="visit-treatment">처치 내용 (투약/조치)</label>
-                    <textarea id="visit-treatment" rows="2" placeholder="예: 소독 후 밴드 부착, 타이레놀 1정 복용 및 20분 침실 휴식" required></textarea>
+                    <label for="visit-treatment" data-i18n="lblTreatment">처치 내용 (투약/조치)</label>
+                    <textarea id="visit-treatment" rows="2" data-i18n-placeholder="phTreatment" placeholder="예: 소독 후 밴드 부착, 타이레놀 1정 복용 및 20분 침실 휴식" required></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="visit-remarks">비고 (선택)</label>
-                    <input type="text" id="visit-remarks" placeholder="특이사항 및 보호자/담임 통보 내용" />
+                    <label for="visit-remarks" data-i18n="lblRemarks">비고 (선택)</label>
+                    <input type="text" id="visit-remarks" data-i18n-placeholder="phRemarks" placeholder="특이사항 및 보호자/담임 통보 내용" />
                   </div>
                   <div class="form-actions">
-                    <button type="reset" class="btn btn-secondary">초기화</button>
-                    <button type="submit" class="btn btn-primary">일지 등록하기</button>
+                    <button type="reset" class="btn btn-secondary" data-i18n="btnReset">초기화</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="btnRegisterVisit">일지 등록하기</button>
                   </div>
                 </form>
               </div>
@@ -328,39 +328,39 @@
               <div class="panel glass flex-2">
                 <div class="panel-header-search flex-wrap-header">
                   <div class="header-left-title">
-                    <h3 class="section-title">보건실 방문 이력</h3>
+                    <h3 class="section-title" data-i18n="visitsHistoryTitle">보건실 방문 이력</h3>
                   </div>
                   <div class="action-btn-group">
-                    <button class="btn btn-secondary sm-btn" id="btn-open-bulk-visit" title="엑셀 또는 CSV 파일로 방문자를 일괄 등록합니다.">
-                      <span>📂</span> 일괄 등록
+                    <button class="btn btn-secondary sm-btn" id="btn-open-bulk-visit" data-i18n-title="titleBulkVisit" title="엑셀 또는 CSV 파일로 방문자를 일괄 등록합니다.">
+                      <span>📂</span> <span data-i18n="btnBulkVisit">일괄 등록</span>
                     </button>
-                    <button class="btn btn-outline sm-btn" id="btn-download-sample" title="일괄 등록용 표준 엑셀 서식 양식을 다운로드합니다.">
-                      <span>📥</span> 샘플 양식
+                    <button class="btn btn-outline sm-btn" id="btn-download-sample" data-i18n-title="titleDownloadSample" title="일괄 등록용 표준 엑셀 서식 양식을 다운로드합니다.">
+                      <span>📥</span> <span data-i18n="btnDownloadSample">샘플 양식</span>
                     </button>
-                    <button class="btn btn-primary sm-btn" id="btn-print-visits" title="방문 일지를 인쇄용 서식으로 출력합니다.">
-                      <span>🖨️</span> 방문일지 출력
+                    <button class="btn btn-primary sm-btn" id="btn-print-visits" data-i18n-title="titlePrintVisits" title="방문 일지를 인쇄용 서식으로 출력합니다.">
+                      <span>🖨️</span> <span data-i18n="btnPrintVisits">방문일지 출력</span>
                     </button>
-                    <button class="btn btn-success sm-btn" id="btn-export-visits-excel" title="방문 일지 데이터를 엑셀 파일로 다운로드합니다.">
-                      <span>📊</span> 엑셀 내보내기
+                    <button class="btn btn-success sm-btn" id="btn-export-visits-excel" data-i18n-title="titleExportVisitsExcel" title="방문 일지 데이터를 엑셀 파일로 다운로드합니다.">
+                      <span>📊</span> <span data-i18n="btnExportVisitsExcel">엑셀 내보내기</span>
                     </button>
                   </div>
                 </div>
                 <div class="search-bar-row">
                   <div class="search-box full-width-search">
-                    <input type="text" id="input-search-visit" placeholder="학생명 검색 (복호화 실시간 검색)" />
-                    <button class="btn btn-search" id="btn-search-visit">검색</button>
+                    <input type="text" id="input-search-visit" data-i18n-placeholder="phSearchVisit" placeholder="학생명 검색 (복호화 실시간 검색)" />
+                    <button class="btn btn-search" id="btn-search-visit" data-i18n="btnSearch">검색</button>
                   </div>
                 </div>
                 <div class="table-responsive full-height">
                   <table class="data-table">
                     <thead>
                       <tr>
-                        <th>일시</th>
-                        <th>학년/반/번호</th>
-                        <th>학생명</th>
-                        <th>증상</th>
-                        <th>처치 내용</th>
-                        <th>관리</th>
+                        <th data-i18n="thDateTime">일시</th>
+                        <th data-i18n="thGradeClassNumber">학년/반/번호</th>
+                        <th data-i18n="thStudentName">학생명</th>
+                        <th data-i18n="thSymptom">증상</th>
+                        <th data-i18n="thTreatment">처치 내용</th>
+                        <th data-i18n="thManage">관리</th>
                       </tr>
                     </thead>
                     <tbody id="table-visits-body">
@@ -377,50 +377,50 @@
             <div class="view-split-layout">
               <!-- 왼쪽: 약품/물품 등록 폼 -->
               <div class="panel glass flex-1">
-                <h3 class="section-title">의약품/물품 등록</h3>
+                <h3 class="section-title" data-i18n="inventoryRegisterTitle">의약품/물품 등록</h3>
                 <form id="form-inventory-register" class="vertical-form">
                   <div class="form-group">
-                    <label for="item-name">품목명</label>
-                    <input type="text" id="item-name" placeholder="예: 타이레놀 ER 500mg" required />
+                    <label for="item-name" data-i18n="lblItemName">품목명</label>
+                    <input type="text" id="item-name" data-i18n-placeholder="phItemName" placeholder="예: 타이레놀 ER 500mg" required />
                   </div>
                   <div class="form-group row-2">
                     <div>
-                      <label for="item-category">카테고리</label>
+                      <label for="item-category" data-i18n="lblCategory">카테고리</label>
                       <select id="item-category" required>
-                        <option value="내복약">내복약</option>
-                        <option value="외용약">외용약</option>
-                        <option value="소독/위생">소독/위생</option>
-                        <option value="방역물품">방역물품</option>
-                        <option value="의료기기">의료기기</option>
-                        <option value="기타">기타</option>
+                        <option value="내복약" data-i18n="optInternal">내복약</option>
+                        <option value="외용약" data-i18n="optExternal">외용약</option>
+                        <option value="소독/위생" data-i18n="optDisinfect">소독/위생</option>
+                        <option value="방역물품" data-i18n="optQuarantine">방역물품</option>
+                        <option value="의료기기" data-i18n="optDevice">의료기기</option>
+                        <option value="기타" data-i18n="optEtc">기타</option>
                       </select>
                     </div>
                     <div>
-                      <label for="item-unit">단위</label>
-                      <input type="text" id="item-unit" placeholder="예: 알, 개, 병" required />
+                      <label for="item-unit" data-i18n="lblUnit">단위</label>
+                      <input type="text" id="item-unit" data-i18n-placeholder="phUnit" placeholder="예: 알, 개, 병" required />
                     </div>
                   </div>
                   <div class="form-group row-2">
                     <div>
-                      <label for="item-quantity">최초 재고 수량</label>
+                      <label for="item-quantity" data-i18n="lblQuantity">최초 재고 수량</label>
                       <input type="number" id="item-quantity" min="0" placeholder="0" required />
                     </div>
                     <div>
-                      <label for="item-expiration">유통기한</label>
-                      <input type="date" id="item-expiration" required />
+                      <label for="item-expiration" data-i18n="lblExpiration">유통기한</label>
+                      <input type="date" id="item-expiration" data-placeholder="연도-월-일" required />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="item-location">보관 위치</label>
-                    <input type="text" id="item-location" placeholder="예: A-3 캐비닛 둘째 칸" />
+                    <label for="item-location" data-i18n="lblLocation">보관 위치</label>
+                    <input type="text" id="item-location" data-i18n-placeholder="phLocation" placeholder="예: A-3 캐비닛 둘째 칸" />
                   </div>
                   <div class="form-group">
-                    <label for="item-remarks">특이사항</label>
-                    <input type="text" id="item-remarks" placeholder="비고 입력" />
+                    <label for="item-remarks" data-i18n="lblItemRemarks">특이사항</label>
+                    <input type="text" id="item-remarks" data-i18n-placeholder="phItemRemarks" placeholder="비고 입력" />
                   </div>
                   <div class="form-actions">
-                    <button type="reset" class="btn btn-secondary">초기화</button>
-                    <button type="submit" class="btn btn-primary">물품 추가하기</button>
+                    <button type="reset" class="btn btn-secondary" data-i18n="btnReset">초기화</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="btnAddItem">물품 추가하기</button>
                   </div>
                 </form>
               </div>
@@ -429,17 +429,17 @@
               <div class="panel glass flex-2">
                 <div class="panel-header-search flex-wrap-header">
                   <div class="header-left-title">
-                    <h3 class="section-title">재고 현황 및 알림 관리</h3>
+                    <h3 class="section-title" data-i18n="inventoryStatusTitle">재고 현황 및 알림 관리</h3>
                   </div>
                   <div class="action-btn-group">
-                    <button class="btn btn-secondary sm-btn" id="btn-open-edufine-modal" title="K-에듀파인 품의서 엑셀 파일로 의약품을 일괄 등록합니다.">
-                      <span>📂</span> 에듀파인 엑셀 등록
+                    <button class="btn btn-secondary sm-btn" id="btn-open-edufine-modal" data-i18n-title="titleOpenEdufine" title="K-에듀파인 품의서 엑셀 파일로 의약품을 일괄 등록합니다.">
+                      <span>📂</span> <span data-i18n="btnOpenEdufine">에듀파인 엑셀 등록</span>
                     </button>
-                    <button class="btn btn-primary sm-btn" id="btn-print-inventory" title="의약품 관리대장을 인쇄용 서식으로 출력합니다.">
-                      <span>🖨️</span> 관리대장 출력
+                    <button class="btn btn-primary sm-btn" id="btn-print-inventory" data-i18n-title="titlePrintInventory" title="의약품 관리대장을 인쇄용 서식으로 출력합니다.">
+                      <span>🖨️</span> <span data-i18n="btnPrintInventory">관리대장 출력</span>
                     </button>
-                    <button class="btn btn-success sm-btn" id="btn-export-inventory-excel" title="의약품 목록을 엑셀 파일로 다운로드합니다.">
-                      <span>📊</span> 엑셀 내보내기
+                    <button class="btn btn-success sm-btn" id="btn-export-inventory-excel" data-i18n-title="titleExportInventoryExcel" title="의약품 목록을 엑셀 파일로 다운로드합니다.">
+                      <span>📊</span> <span data-i18n="btnExportInventoryExcel">엑셀 내보내기</span>
                     </button>
                   </div>
                 </div>
@@ -448,27 +448,27 @@
                 <div class="inventory-alert-bar" id="inventory-alert-summary">
                   <div class="alert-badge-item expired" id="badge-expired-count">
                     <span class="badge-icon">🔴</span>
-                    <span class="badge-text">만료: <strong id="cnt-expired">0</strong>건</span>
+                    <span class="badge-text"><span data-i18n="lblExpired">만료:</span> <strong id="cnt-expired">0</strong><span data-i18n="lblCountUnit">건</span></span>
                   </div>
                   <div class="alert-badge-item warning" id="badge-warning-count">
                     <span class="badge-icon">⚠️</span>
-                    <span class="badge-text">유효기간 임박(30일내): <strong id="cnt-warning">0</strong>건</span>
+                    <span class="badge-text"><span data-i18n="lblExpiryImminent">유효기간 임박(30일내):</span> <strong id="cnt-warning">0</strong><span data-i18n="lblCountUnit">건</span></span>
                   </div>
                   <div class="alert-badge-item low-stock" id="badge-lowstock-count">
                     <span class="badge-icon">📉</span>
-                    <span class="badge-text">재고 부족(5개이하): <strong id="cnt-lowstock">0</strong>건</span>
+                    <span class="badge-text"><span data-i18n="lblLowStock">재고 부족(5개이하):</span> <strong id="cnt-lowstock">0</strong><span data-i18n="lblCountUnit">건</span></span>
                   </div>
                 </div>
 
                 <!-- 검색 & 필터 영역 -->
                 <div class="search-filter-row">
                   <div class="search-box">
-                    <input type="text" id="input-search-inventory" placeholder="품목명 또는 카테고리 검색" />
+                    <input type="text" id="input-search-inventory" data-i18n-placeholder="phSearchInventory" placeholder="품목명 또는 카테고리 검색" />
                   </div>
                   <div class="filter-btn-group">
-                    <button class="filter-chip active" data-filter="all">전체 목록</button>
-                    <button class="filter-chip chip-warning" data-filter="expiry">유효기간 만료/임박</button>
-                    <button class="filter-chip chip-danger" data-filter="lowstock">재고 부족</button>
+                    <button class="filter-chip active" data-filter="all" data-i18n="chipAllList">전체 목록</button>
+                    <button class="filter-chip chip-warning" data-filter="expiry" data-i18n="chipExpiryFilter">유효기간 만료/임박</button>
+                    <button class="filter-chip chip-danger" data-filter="lowstock" data-i18n="chipLowStockFilter">재고 부족</button>
                   </div>
                 </div>
 
@@ -476,12 +476,12 @@
                   <table class="data-table">
                     <thead>
                       <tr>
-                        <th>카테고리</th>
-                        <th>품목명</th>
-                        <th>재고량</th>
-                        <th>보관 위치</th>
-                        <th>유통기한 (상태)</th>
-                        <th>입/출고 관리</th>
+                        <th data-i18n="thCategory">카테고리</th>
+                        <th data-i18n="thItemName">품목명</th>
+                        <th data-i18n="thQuantity">재고량</th>
+                        <th data-i18n="thLocation">보관 위치</th>
+                        <th data-i18n="thExpiryStatus">유통기한 (상태)</th>
+                        <th data-i18n="thStockManage">입/출고 관리</th>
                       </tr>
                     </thead>
                     <tbody id="table-inventory-body">
@@ -498,49 +498,49 @@
             <div class="view-split-layout">
               <!-- 왼쪽: 요보호 학생 등록 폼 -->
               <div class="panel glass flex-1">
-                <h3 class="section-title">요보호 학생 정보 등록</h3>
+                <h3 class="section-title" data-i18n="protectedRegisterTitle">요보호 학생 정보 등록</h3>
                 <form id="form-protected-register" class="vertical-form">
                   <div class="form-group row-2">
                     <div>
-                      <label for="prot-grade">학년</label>
-                      <input type="text" id="prot-grade" placeholder="예: 5" required />
+                      <label for="prot-grade" data-i18n="lblGrade">학년</label>
+                      <input type="text" id="prot-grade" data-i18n-placeholder="phGrade5" placeholder="예: 5" required />
                     </div>
                     <div>
-                      <label for="prot-class">반</label>
-                      <input type="text" id="prot-class" placeholder="예: 4" required />
+                      <label for="prot-class" data-i18n="lblClass">반</label>
+                      <input type="text" id="prot-class" data-i18n-placeholder="phClass4" placeholder="예: 4" required />
                     </div>
                   </div>
                   <div class="form-group row-2">
                     <div>
-                      <label for="prot-number">번호</label>
-                      <input type="text" id="prot-number" placeholder="예: 8" required />
+                      <label for="prot-number" data-i18n="lblNumber">번호</label>
+                      <input type="text" id="prot-number" data-i18n-placeholder="phNumber8" placeholder="예: 8" required />
                     </div>
                     <div>
-                      <label for="prot-name">학생명</label>
-                      <input type="text" id="prot-name" placeholder="이름 입력" required />
+                      <label for="prot-name" data-i18n="lblStudentName">학생명</label>
+                      <input type="text" id="prot-name" data-i18n-placeholder="phStudentName" placeholder="이름 입력" required />
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="prot-disease">질환명 / 관리 필요 사유</label>
-                    <input type="text" id="prot-disease" placeholder="예: 천식 (흡입기 지참)" required />
+                    <label for="prot-disease" data-i18n="lblDiseaseName">질환명 / 관리 필요 사유</label>
+                    <input type="text" id="prot-disease" data-i18n-placeholder="phDiseaseName" placeholder="예: 천식 (흡입기 지참)" required />
                   </div>
                   <div class="form-group">
-                    <label for="prot-action">비상 시 응급조치 요령</label>
-                    <textarea id="prot-action" rows="3" placeholder="예: 호흡곤란 시 흡입기 2회 사용 후 산소포화도 측정, 보호자 즉시 연락" required></textarea>
+                    <label for="prot-action" data-i18n="lblEmergencyAction">비상 시 응급조치 요령</label>
+                    <textarea id="prot-action" rows="3" data-i18n-placeholder="phEmergencyAction" placeholder="예: 호흡곤란 시 흡입기 2회 사용 후 산소포화도 측정, 보호자 즉시 연락" required></textarea>
                   </div>
                   <div class="form-group row-2">
                     <div>
-                      <label for="prot-contact-parent">학부모 연락처</label>
-                      <input type="text" id="prot-contact-parent" placeholder="예: 010-XXXX-XXXX" required />
+                      <label for="prot-contact-parent" data-i18n="lblContactParent">학부모 연락처</label>
+                      <input type="text" id="prot-contact-parent" data-i18n-placeholder="phContact" placeholder="예: 010-XXXX-XXXX" required />
                     </div>
                     <div>
-                      <label for="prot-contact-teacher">담임교사 연락처</label>
-                      <input type="text" id="prot-contact-teacher" placeholder="예: 010-XXXX-XXXX" required />
+                      <label for="prot-contact-teacher" data-i18n="lblContactTeacher">담임교사 연락처</label>
+                      <input type="text" id="prot-contact-teacher" data-i18n-placeholder="phContact" placeholder="예: 010-XXXX-XXXX" required />
                     </div>
                   </div>
                   <div class="form-actions">
-                    <button type="reset" class="btn btn-secondary">초기화</button>
-                    <button type="submit" class="btn btn-primary">학생 정보 등록</button>
+                    <button type="reset" class="btn btn-secondary" data-i18n="btnReset">초기화</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="btnRegisterProtected">학생 정보 등록</button>
                   </div>
                 </form>
               </div>
@@ -549,29 +549,29 @@
               <div class="panel glass flex-2">
                 <div class="panel-header-search flex-wrap-header">
                   <div class="header-left-title">
-                    <h3 class="section-title">요보호 학생 명단</h3>
+                    <h3 class="section-title" data-i18n="protectedListTitle">요보호 학생 명단</h3>
                   </div>
                   <div class="action-btn-group">
-                    <button class="btn btn-success sm-btn" id="btn-export-protected-excel" title="요보호 학생 목록을 엑셀 파일로 다운로드합니다.">
-                      <span>📊</span> 엑셀 내보내기
+                    <button class="btn btn-success sm-btn" id="btn-export-protected-excel" data-i18n-title="titleExportProtectedExcel" title="요보호 학생 목록을 엑셀 파일로 다운로드합니다.">
+                      <span>📊</span> <span data-i18n="btnExportVisitsExcel">엑셀 내보내기</span>
                     </button>
                   </div>
                 </div>
                 <div class="search-bar-row">
                   <div class="search-box full-width-search">
-                    <input type="text" id="input-search-protected" placeholder="학생명 또는 질환명 검색" />
+                    <input type="text" id="input-search-protected" data-i18n-placeholder="phSearchProtected" placeholder="학생명 또는 질환명 검색" />
                   </div>
                 </div>
                 <div class="table-responsive full-height">
                   <table class="data-table">
                     <thead>
                       <tr>
-                        <th>학년/반/번호</th>
-                        <th>학생명</th>
-                        <th>질환명</th>
-                        <th>학부모 연락처</th>
-                        <th>비상 대응</th>
-                        <th>관리</th>
+                        <th data-i18n="thGradeClassNumber">학년/반/번호</th>
+                        <th data-i18n="thStudentName">학생명</th>
+                        <th data-i18n="thDiseaseName">질환명</th>
+                        <th data-i18n="thContactParent">학부모 연락처</th>
+                        <th data-i18n="thEmergencyResponse">비상 대응</th>
+                        <th data-i18n="thManage">관리</th>
                       </tr>
                     </thead>
                     <tbody id="table-protected-body">
@@ -589,24 +589,24 @@
               <div class="panel-header-search flex-wrap-header">
                 <div class="header-left-title">
                   <h3 class="section-title" id="students-section-title">전교생 명단 (나이스 NEIS 일괄등록)</h3>
-                  <span class="sub-title-text" id="students-section-subtitle">학생명을 검색하여 과거 방문 이력 및 요보호 여부를 빠르게 관리합니다.</span>
+                  <span class="sub-title-text" id="students-section-subtitle" data-i18n="studentsSectionSub">학생명을 검색하여 과거 방문 이력 및 요보호 여부를 빠르게 관리합니다.</span>
                 </div>
                 <div class="action-btn-group">
-                  <button class="btn btn-secondary sm-btn" id="btn-open-neis-modal" title="엑셀 파일로 전교생 명단을 일괄 등록합니다.">
+                  <button class="btn btn-secondary sm-btn" id="btn-open-neis-modal" data-i18n-title="titleNeisExcel" title="엑셀 파일로 전교생 명단을 일괄 등록합니다.">
                     <span>📂</span> <span id="btn-text-open-neis">나이스 엑셀 일괄등록</span>
                   </button>
                   <button class="btn btn-outline sm-btn" id="btn-download-neis-sample">
                     <span>📥</span> <span id="btn-text-neis-sample">나이스 샘플서식</span>
                   </button>
                   <button class="btn btn-danger sm-btn" id="btn-clear-students">
-                    <span>🗑️</span> 명단 전체삭제
+                    <span>🗑️</span> <span data-i18n="btnClearStudents">명단 전체삭제</span>
                   </button>
                 </div>
               </div>
 
               <div class="search-filter-row">
                 <div class="search-box full-width-search">
-                  <input type="text" id="input-search-students" placeholder="학생명, 학년, 반 검색 (예: 3학년 또는 김철수)" />
+                  <input type="text" id="input-search-students" data-i18n-placeholder="phSearchStudents" placeholder="학생명, 학년, 반 검색 (예: 3학년 또는 김철수)" />
                 </div>
               </div>
 
@@ -614,12 +614,12 @@
                 <table class="data-table">
                   <thead>
                     <tr>
-                      <th>학년/반/번호</th>
-                      <th>학생명</th>
-                      <th>성별</th>
-                      <th>과거 보건실 방문 횟수</th>
-                      <th>비고 / 특이사항</th>
-                      <th>관리</th>
+                      <th data-i18n="thGradeClassNumber">학년/반/번호</th>
+                      <th data-i18n="thStudentName">학생명</th>
+                      <th data-i18n="thGender">성별</th>
+                      <th data-i18n="thPastVisitsCount">과거 보건실 방문 횟수</th>
+                      <th data-i18n="thRemarks">비고 / 특이사항</th>
+                      <th data-i18n="thManage">관리</th>
                     </tr>
                   </thead>
                   <tbody id="table-students-body">
@@ -635,15 +635,15 @@
             <div class="panel glass flex-full">
               <div class="panel-header-search flex-wrap-header">
                 <div class="header-left-title">
-                  <h3 class="section-title">📊 보건실 통합 다차원 통계 분석</h3>
-                  <span class="sub-title-text">일별, 월별, 학년별, 반별, 성별, 건강문제별 방문 현황을 시각화하여 보고합니다.</span>
+                  <h3 class="section-title" data-i18n="statsTitle">📊 보건실 통합 다차원 통계 분석</h3>
+                  <span class="sub-title-text" data-i18n="statsSub">일별, 월별, 학년별, 반별, 성별, 건강문제별 방문 현황을 시각화하여 보고합니다.</span>
                 </div>
                 <div class="action-btn-group">
                   <button class="btn btn-primary sm-btn" id="btn-print-stats">
-                    <span>🖨️</span> 통계보고서 출력
+                    <span>🖨️</span> <span data-i18n="btnPrintStats">통계보고서 출력</span>
                   </button>
                   <button class="btn btn-success sm-btn" id="btn-export-stats-excel">
-                    <span>📊</span> 통계 엑셀 저장
+                    <span>📊</span> <span data-i18n="btnExportStatsExcel">통계 엑셀 저장</span>
                   </button>
                 </div>
               </div>
@@ -652,7 +652,7 @@
               <div class="stats-charts-grid">
                 <!-- 차트 1: 월별/일별 추이 -->
                 <div class="detail-panel glass">
-                  <h4 class="panel-title">📈 월별 보건실 방문 추이</h4>
+                  <h4 class="panel-title">📈 <span data-i18n="chartMonthlyTrendTitle">월별 보건실 방문 추이</span></h4>
                   <div class="chart-container">
                     <canvas id="chart-monthly-trend"></canvas>
                   </div>
@@ -660,7 +660,7 @@
 
                 <!-- 차트 2: 학년별 분포 -->
                 <div class="detail-panel glass">
-                  <h4 class="panel-title">🏫 학년별 방문자 분포</h4>
+                  <h4 class="panel-title">🏫 <span data-i18n="chartGradeDistTitle">학년별 방문자 분포</span></h4>
                   <div class="chart-container">
                     <canvas id="chart-grade-dist"></canvas>
                   </div>
@@ -668,7 +668,7 @@
 
                 <!-- 차트 3: 성별 비율 -->
                 <div class="detail-panel glass">
-                  <h4 class="panel-title">👫 성별 방문 비율</h4>
+                  <h4 class="panel-title">👫 <span data-i18n="chartGenderDistTitle">성별 방문 비율</span></h4>
                   <div class="chart-container">
                     <canvas id="chart-gender-dist"></canvas>
                   </div>
@@ -676,7 +676,7 @@
 
                 <!-- 차트 4: 증상별/건강문제별 분포 -->
                 <div class="detail-panel glass">
-                  <h4 class="panel-title">💊 건강문제/증상별 비율</h4>
+                  <h4 class="panel-title">💊 <span data-i18n="chartSymptomDistTitle">건강문제/증상별 비율</span></h4>
                   <div class="chart-container">
                     <canvas id="chart-symptom-dist"></canvas>
                   </div>
@@ -693,42 +693,42 @@
     <div id="modal-emergency" class="modal-overlay">
       <div class="modal-content glass animate-pop">
         <div class="modal-header">
-          <h3 id="modal-title" class="text-red">🚨 요보호 학생 응급 대응 요령</h3>
+          <h3 id="modal-title" class="text-red">🚨 <span data-i18n="modalEmergencyTitle">요보호 학생 응급 대응 요령</span></h3>
           <button class="close-btn" id="btn-close-modal">×</button>
         </div>
         <div class="modal-body">
           <div class="student-profile-summary">
             <div>
-              <label>대상 학생:</label>
+              <label data-i18n="lblEmergencyTargetStudent">대상 학생:</label>
               <span id="modal-student-info">5학년 4반 8번 김지우</span>
             </div>
             <div>
-              <label>질환명:</label>
+              <label data-i18n="lblEmergencyDisease">질환명:</label>
               <span id="modal-disease-name" class="badge-disease">천식</span>
             </div>
           </div>
           
           <div class="emergency-action-box">
-            <h4>👨‍⚕️ 응급조치 절차 (Emergency Actions)</h4>
+            <h4>👨‍⚕️ <span data-i18n="lblEmergencyActionTitle">응급조치 절차 (Emergency Actions)</span></h4>
             <p id="modal-emergency-action">호흡 곤란 호소 시 즉시 환기가 잘 되는 곳에 누이고 가슴을 압박하지 않게 옷 단추를 풉니다. 지참한 벤토린 흡입기를 2회 흡입시킵니다. 5분 후에도 안정이 되지 않는 경우 119를 부르고 학부모에게 연락을 진행합니다.</p>
           </div>
 
           <div class="emergency-contacts">
-            <h4>📞 비상 연락망</h4>
+            <h4>📞 <span data-i18n="lblEmergencyContactsTitle">비상 연락망</span></h4>
             <div class="contact-grid">
               <div class="contact-card">
-                <span class="contact-role">학부모</span>
+                <span class="contact-role" data-i18n="lblContactParentRole">학부모</span>
                 <span class="contact-number" id="modal-contact-parent">010-1234-5678</span>
               </div>
               <div class="contact-card">
-                <span class="contact-role">담임교사</span>
+                <span class="contact-role" data-i18n="lblContactTeacherRole">담임교사</span>
                 <span class="contact-number" id="modal-contact-teacher">010-9876-5432</span>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" id="btn-modal-close-ok">확인</button>
+          <button class="btn btn-secondary" id="btn-modal-close-ok" data-i18n="btnConfirm">확인</button>
         </div>
       </div>
     </div>
@@ -737,39 +737,39 @@
     <div id="modal-bulk-visit" class="modal-overlay">
       <div class="modal-content glass animate-pop modal-lg">
         <div class="modal-header">
-          <h3>📂 방문자 데이터 일괄 등록 (Excel/CSV)</h3>
+          <h3 data-i18n="modalBulkVisitTitle">📂 방문자 데이터 일괄 등록 (Excel/CSV)</h3>
           <button class="close-btn" id="btn-close-bulk-modal">×</button>
         </div>
         <div class="modal-body">
           <div class="bulk-upload-zone" id="drop-zone-bulk">
             <div class="drop-icon">📊</div>
-            <p class="drop-text"><strong>엑셀(.xlsx) 또는 CSV 파일</strong>을 이곳에 드래그하거나 클릭하여 선택하세요.</p>
-            <span class="drop-hint">(필수 항목: 학년, 반, 번호, 학생명, 주요증상, 처치내용)</span>
+            <p class="drop-text" data-i18n="modalBulkDropText"><strong>엑셀(.xlsx) 또는 CSV 파일</strong>을 이곳에 드래그하거나 클릭하여 선택하세요.</p>
+            <span class="drop-hint" data-i18n="modalBulkDropHint">(필수 항목: 학년, 반, 번호, 학생명, 주요증상, 처치내용)</span>
             <input type="file" id="input-bulk-file" accept=".xlsx, .xls, .csv" class="hidden-file-input" />
             <div class="bulk-zone-actions">
-              <button class="btn btn-secondary sm-btn" id="btn-select-file">파일 선택</button>
-              <button class="btn btn-outline sm-btn" id="btn-download-sample-modal">📥 샘플 엑셀 서식 받기</button>
+              <button class="btn btn-secondary sm-btn" id="btn-select-file" data-i18n="btnSelectFile">파일 선택</button>
+              <button class="btn btn-outline sm-btn" id="btn-download-sample-modal" data-i18n="btnDownloadSampleModal">📥 샘플 엑셀 서식 받기</button>
             </div>
           </div>
 
           <!-- 미리보기 영역 -->
           <div class="bulk-preview-section hidden" id="bulk-preview-section">
             <div class="preview-header">
-              <h4>📋 파싱된 데이터 미리보기 <span class="preview-count" id="bulk-preview-count">(총 0건)</span></h4>
-              <span class="preview-notice">🔒 저장 시 모든 학생 민감 정보는 암호화 처리됩니다.</span>
+              <h4>📋 <span data-i18n="lblParsedPreviewTitle">파싱된 데이터 미리보기</span> <span class="preview-count" id="bulk-preview-count">(총 0건)</span></h4>
+              <span class="preview-notice" data-i18n="lblSecurityNotice">🔒 저장 시 모든 학생 민감 정보는 암호화 처리됩니다.</span>
             </div>
             <div class="table-responsive preview-table-wrapper">
               <table class="data-table sm-table">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>학년</th>
-                    <th>반</th>
-                    <th>번호</th>
-                    <th>학생명</th>
-                    <th>주요 증상</th>
-                    <th>처치 내용</th>
-                    <th>비고</th>
+                    <th data-i18n="thGrade">학년</th>
+                    <th data-i18n="thClass">반</th>
+                    <th data-i18n="thNumber">번호</th>
+                    <th data-i18n="thStudentName">학생명</th>
+                    <th data-i18n="thSymptom">주요 증상</th>
+                    <th data-i18n="thTreatment">처치 내용</th>
+                    <th data-i18n="thRemarks">비고</th>
                   </tr>
                 </thead>
                 <tbody id="bulk-preview-table-body">
@@ -780,8 +780,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" id="btn-cancel-bulk">취소</button>
-          <button class="btn btn-primary" id="btn-submit-bulk" disabled>일괄 등록 실행</button>
+          <button class="btn btn-secondary" id="btn-cancel-bulk" data-i18n="btnCancel">취소</button>
+          <button class="btn btn-primary" id="btn-submit-bulk" data-i18n="btnRunBulk" disabled>일괄 등록 실행</button>
         </div>
       </div>
     </div>
@@ -790,9 +790,9 @@
     <div id="modal-print-view" class="modal-overlay">
       <div class="modal-content glass animate-pop modal-xl print-modal-content">
         <div class="modal-header no-print">
-          <h3 id="print-modal-header-title">🖨️ 서식 출력 미리보기</h3>
+          <h3 id="print-modal-header-title">🖨️ <span data-i18n="modalPrintTitle">서식 출력 미리보기</span></h3>
           <div class="modal-header-actions">
-            <button class="btn btn-primary sm-btn" id="btn-do-print">🖨️ 바로 인쇄</button>
+            <button class="btn btn-primary sm-btn" id="btn-do-print" data-i18n="btnDoPrint">🖨️ 바로 인쇄</button>
             <button class="close-btn" id="btn-close-print-modal">×</button>
           </div>
         </div>
@@ -800,17 +800,17 @@
         <!-- 실제 인쇄되는 영역 -->
         <div class="modal-body printable-area" id="printable-area">
           <div class="print-doc-header">
-            <h2 class="print-doc-title" id="print-doc-title">보건실 방문자 일지</h2>
+            <h2 class="print-doc-title" id="print-doc-title" data-i18n="printDocTitle">보건실 방문자 일지</h2>
             
             <!-- 결재란 테이블 -->
             <table class="print-approval-table">
               <tbody>
                 <tr>
-                  <th rowspan="2" class="approval-header">결<br/>재</th>
-                  <th>담 당</th>
-                  <th>보건담당</th>
-                  <th>행정실장</th>
-                  <th>학교장</th>
+                  <th rowspan="2" class="approval-header" data-i18n="thApproval">결<br/>재</th>
+                  <th data-i18n="thHandler">담 당</th>
+                  <th data-i18n="thHealthHandler">보건담당</th>
+                  <th data-i18n="thAdminManager">행정실장</th>
+                  <th data-i18n="thPrincipal">학교장</th>
                 </tr>
                 <tr>
                   <td class="approval-sign-space"></td>
@@ -837,13 +837,13 @@
           </table>
 
           <div class="print-footer-note">
-            <p>※ 본 서식은 스마트 보건실 업무지원 시스템에서 공식 출력된 문서입니다.</p>
+            <p data-i18n="printFooterNote">※ 본 서식은 스마트 보건실 업무지원 시스템에서 공식 출력된 문서입니다.</p>
           </div>
         </div>
 
         <div class="modal-footer no-print">
-          <button class="btn btn-secondary" id="btn-close-print-modal-footer">닫기</button>
-          <button class="btn btn-primary" id="btn-do-print-footer">🖨️ 인쇄하기</button>
+          <button class="btn btn-secondary" id="btn-close-print-modal-footer" data-i18n="btnCancel">닫기</button>
+          <button class="btn btn-primary" id="btn-do-print-footer" data-i18n="btnDoPrintFooter">🖨️ 인쇄하기</button>
         </div>
       </div>
     </div>
@@ -862,27 +862,27 @@
             <span class="drop-hint" id="modal-neis-drop-hint">(필수 컬럼: 학년, 반, 번호, 성명/학생명, 성별)</span>
             <input type="file" id="input-neis-file" accept=".xlsx, .xls, .csv" class="hidden-file-input" />
             <div class="bulk-zone-actions">
-              <button class="btn btn-secondary sm-btn" id="btn-select-neis-file">파일 선택</button>
-              <button class="btn btn-outline sm-btn" id="btn-download-neis-sample-modal">📥 <span id="btn-text-neis-sample-modal">나이스 샘플 양식</span></button>
+              <button class="btn btn-secondary sm-btn" id="btn-select-neis-file" data-i18n="btnSelectFile">파일 선택</button>
+              <button class="btn btn-outline sm-btn" id="btn-download-neis-sample-modal">📥 <span id="btn-text-neis-sample-modal">나이스 샘늘 양식</span></button>
             </div>
           </div>
 
           <div class="bulk-preview-section hidden" id="neis-preview-section">
             <div class="preview-header">
-              <h4>📋 나이스 명단 파싱 미리보기 <span class="preview-count" id="neis-preview-count">(총 0명)</span></h4>
-              <span class="preview-notice">🔒 모든 학생명 및 개인정보는 암호화하여 SQLite DB에 저장됩니다.</span>
+              <h4>📋 <span data-i18n="lblNeisParsedPreview">나이스 명단 파싱 미리보기</span> <span class="preview-count" id="neis-preview-count">(총 0명)</span></h4>
+              <span class="preview-notice" data-i18n="lblNeisSecurityNotice">🔒 모든 학생명 및 개인정보는 암호화하여 SQLite DB에 저장됩니다.</span>
             </div>
             <div class="table-responsive preview-table-wrapper">
               <table class="data-table sm-table">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>학년</th>
-                    <th>반</th>
-                    <th>번호</th>
-                    <th>학생명</th>
-                    <th>성별</th>
-                    <th>비고</th>
+                    <th data-i18n="thGrade">학년</th>
+                    <th data-i18n="thClass">반</th>
+                    <th data-i18n="thNumber">번호</th>
+                    <th data-i18n="thStudentName">학생명</th>
+                    <th data-i18n="thGender">성별</th>
+                    <th data-i18n="thRemarks">비고</th>
                   </tr>
                 </thead>
                 <tbody id="neis-preview-table-body">
@@ -893,8 +893,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" id="btn-cancel-neis">취소</button>
-          <button class="btn btn-primary" id="btn-submit-neis" disabled>전교생 명단 일괄 저장</button>
+          <button class="btn btn-secondary" id="btn-cancel-neis" data-i18n="btnCancel">취소</button>
+          <button class="btn btn-primary" id="btn-submit-neis" data-i18n="btnSaveAllStudents" disabled>전교생 명단 일괄 저장</button>
         </div>
       </div>
     </div>
@@ -903,36 +903,36 @@
     <div id="modal-edufine-inventory" class="modal-overlay">
       <div class="modal-content glass animate-pop modal-lg">
         <div class="modal-header">
-          <h3>💊 K-에듀파인 품의서 엑셀 의약품 일괄 등록</h3>
+          <h3 data-i18n="modalEdufineTitle">💊 K-에듀파인 품의서 엑셀 의약품 일괄 등록</h3>
           <button class="close-btn" id="btn-close-edufine-modal">×</button>
         </div>
         <div class="modal-body">
           <div class="bulk-upload-zone" id="drop-zone-edufine">
             <div class="drop-icon">🧾</div>
-            <p class="drop-text"><strong>K-에듀파인 품의서 / 물품 구매 엑셀 파일</strong>을 드래그하거나 선택하세요.</p>
-            <span class="drop-hint">(필수 항목: 품목명/물품명, 수량, 단위, 유통기한/비고)</span>
+            <p class="drop-text" data-i18n="modalEdufineDropText"><strong>K-에듀파인 품의서 / 물품 구매 엑셀 파일</strong>을 드래그하거나 선택하세요.</p>
+            <span class="drop-hint" data-i18n="modalEdufineDropHint">(필수 항목: 품목명/물품명, 수량, 단위, 유통기한/비고)</span>
             <input type="file" id="input-edufine-file" accept=".xlsx, .xls, .csv" class="hidden-file-input" />
             <div class="bulk-zone-actions">
-              <button class="btn btn-secondary sm-btn" id="btn-select-edufine-file">파일 선택</button>
-              <button class="btn btn-outline sm-btn" id="btn-download-edufine-sample">📥 에듀파인 샘플양식</button>
+              <button class="btn btn-secondary sm-btn" id="btn-select-edufine-file" data-i18n="btnSelectFile">파일 선택</button>
+              <button class="btn btn-outline sm-btn" id="btn-download-edufine-sample" data-i18n="btnDownloadEdufineSample">📥 에듀파인 샘플양식</button>
             </div>
           </div>
 
           <div class="bulk-preview-section hidden" id="edufine-preview-section">
             <div class="preview-header">
-              <h4>📋 에듀파인 품의 의약품 미리보기 <span class="preview-count" id="edufine-preview-count">(총 0건)</span></h4>
+              <h4>📋 <span data-i18n="lblEdufinePreviewTitle">에듀파인 품의 의약품 미리보기</span> <span class="preview-count" id="edufine-preview-count">(총 0건)</span></h4>
             </div>
             <div class="table-responsive preview-table-wrapper">
               <table class="data-table sm-table">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>카테고리</th>
-                    <th>품목명</th>
-                    <th>입고 수량</th>
-                    <th>단위</th>
-                    <th>유통기한</th>
-                    <th>보관위치/비고</th>
+                    <th data-i18n="thCategory">카테고리</th>
+                    <th data-i18n="thItemName">품목명</th>
+                    <th data-i18n="thInQty">입고 수량</th>
+                    <th data-i18n="thUnit">단위</th>
+                    <th data-i18n="thExpiry">유통기한</th>
+                    <th data-i18n="thLocationRemarks">보관위치/비고</th>
                   </tr>
                 </thead>
                 <tbody id="edufine-preview-table-body">
@@ -943,8 +943,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" id="btn-cancel-edufine">취소</button>
-          <button class="btn btn-primary" id="btn-submit-edufine" disabled>의약품 재고에 일괄 등록</button>
+          <button class="btn btn-secondary" id="btn-cancel-edufine" data-i18n="btnCancel">취소</button>
+          <button class="btn btn-primary" id="btn-submit-edufine" data-i18n="btnRunEdufine" disabled>의약품 재고에 일괄 등록</button>
         </div>
       </div>
     </div>
@@ -1022,7 +1022,7 @@
 
             <!-- 실제 골격계 참고 이미지 (첨부 자료 기반) -->
             <div class="body-reference-panel">
-              <span class="body-reference-caption">🦴 실제 골격 참고도</span>
+              <span class="body-reference-caption" id="body-ref-caption">🦴 실제 골격 참고도</span>
               <img class="body-reference-img" id="body-reference-frontview" src="" alt="인체 골격계 정면도 참고 이미지" />
               <button type="button" class="body-reference-fullbtn" id="btn-view-full-chart">전체 골격표 크게 보기</button>
             </div>
@@ -1031,7 +1031,7 @@
             <!-- 손/발 세부 부위 선택 서브패널 -->
             <div class="sub-part-panel hidden" id="sub-part-panel">
               <div class="sub-part-panel-header">
-                <strong id="sub-part-panel-title">세부 부위 선택</strong>
+                <strong id="sub-part-panel-title" data-i18n="subPanelTitle">세부 부위 선택</strong>
                 <button type="button" class="close-btn sm" id="btn-close-sub-panel">×</button>
               </div>
               <img class="sub-part-panel-img" id="sub-part-panel-img" src="" alt="세부 부위 골격 참고 이미지" />
@@ -1039,14 +1039,14 @@
             </div>
 
             <div class="selected-parts-display">
-              <label>선택된 신체 부위:</label>
-              <span id="selected-part-tags" class="selected-tags-box">선택된 부위 없음</span>
+              <label id="lbl-selected-parts">선택된 신체 부위:</label>
+              <span id="selected-part-tags" class="selected-tags-box" data-i18n="noPartsSelected">선택된 부위 없음</span>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" id="btn-reset-body-map">초기화</button>
-          <button class="btn btn-primary" id="btn-apply-body-map">입력 폼에 적용</button>
+          <button class="btn btn-secondary" id="btn-reset-body-map" data-i18n="btnReset">초기화</button>
+          <button class="btn btn-primary" id="btn-apply-body-map" data-i18n="btnApply">입력 폼에 적용</button>
         </div>
       </div>
     </div>
@@ -1055,7 +1055,7 @@
     <div id="modal-full-chart" class="modal-overlay">
       <div class="modal-content glass animate-pop modal-chart">
         <div class="modal-header">
-          <h3>🦴 인체 골격계 상세 참고표 (원본)</h3>
+          <h3 data-i18n="modalFullChartTitle"> 🦴 인체 골격계 상세 참고표 (원본)</h3>
           <button class="close-btn" id="btn-close-full-chart">×</button>
         </div>
         <div class="modal-body chart-modal-body">
@@ -1068,26 +1068,26 @@
     <div id="modal-db-share" class="modal-overlay">
       <div class="modal-content glass animate-pop">
         <div class="modal-header">
-          <h3>💾 2인 배치 학교 DB 공유 & 백업 안내</h3>
+          <h3 data-i18n="modalDbShareTitle">💾 2인 배치 학교 DB 공유 & 백업 안내</h3>
           <button class="close-btn" id="btn-close-db-share">×</button>
         </div>
         <div class="modal-body">
           <div class="security-info-box">
-            <h4>🔒 개인정보보호 단독 로컬 저장소 지정</h4>
-            <p>본 프로그램은 학생들의 민감한 건강 개인정보 보호를 위해 외부 클라우드 서버 대신 <strong>학교 내부 PC의 SQLite 암호화 데이터베이스(`healthcare.db`)</strong>를 이용합니다.</p>
+            <h4 data-i18n="lblDbSecurityTitle">🔒 개인정보보호 단독 로컬 저장소 지정</h4>
+            <p data-i18n="lblDbSecurityDesc">본 프로그램은 학생들의 민감한 건강 개인정보 보호를 위해 외부 클라우드 서버 대신 <strong>학교 내부 PC의 SQLite 암호화 데이터베이스(`healthcare.db`)</strong>를 이용합니다.</p>
           </div>
           <div class="share-guide-box mt-3">
-            <h4>👨‍⚕️ 2인 보건교사 동시 기록 및 공유 방법</h4>
+            <h4 data-i18n="lblDbShareMethodTitle">👨‍⚕️ 2인 보건교사 동시 기록 및 공유 방법</h4>
             <ol class="share-step-list">
-              <li>학교 내부 네트워크 교사 공유 폴더(예: `\\SchoolNAS\HealthDB\`)를 지정합니다.</li>
-              <li>아래 <strong>`DB 파일 생성/백업`</strong> 버튼을 눌러 현재 로컬 DB를 백업한 후, 공유 폴더에 저장합니다.</li>
-              <li>2인 배치 보건교사 PC에서 해당 공유 폴더 경로를 함께 참조하여 실시간 공유 및 백업 관리를 수행할 수 있습니다.</li>
+              <li data-i18n="lblDbShareStep1">학교 내부 네트워크 교사 공유 폴더(예: `\\SchoolNAS\HealthDB\`)를 지정합니다.</li>
+              <li data-i18n="lblDbShareStep2">아래 <strong>`DB 파일 생성/백업`</strong> 버튼을 눌러 현재 로컬 DB를 백업한 후, 공유 폴더에 저장합니다.</li>
+              <li data-i18n="lblDbShareStep3">2인 배치 보건교사 PC에서 해당 공유 폴더 경로를 함께 참조하여 실시간 공유 및 백업 관리를 수행할 수 있습니다.</li>
             </ol>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" id="btn-backup-db-action">💾 로컬 DB 수동 백업하기</button>
-          <button class="btn btn-primary" id="btn-confirm-db-share">확인</button>
+          <button class="btn btn-secondary" id="btn-backup-db-action" data-i18n="btnManualBackup">💾 로컬 DB 수동 백업하기</button>
+          <button class="btn btn-primary" id="btn-confirm-db-share" data-i18n="btnConfirm">확인</button>
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@
     "sql.js": "^1.14.1"
   },
   "build": {
-    "productName": "스마트 보건실 업무지원 시스템",
+    "productName": "Smart Healthroom Support System",
     "appId": "com.healthcare.smartapp",
     "directories": {
       "output": "dist_setup"
@@ -74,7 +74,7 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "shortcutName": "스마트 보건실 업무지원 시스템"
+      "shortcutName": "Smart Healthroom Support System"
     }
   }
 }

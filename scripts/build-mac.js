@@ -52,7 +52,7 @@ async function runMacBuild() {
   await builder.build({
     targets: builder.Platform.MAC.createTarget(['zip', 'dir'], builder.Arch.x64, builder.Arch.arm64),
     config: {
-      productName: "스마트 보건실 업무지원 시스템",
+      productName: "Smart Healthroom Support System",
       appId: "com.healthcare.smartapp",
       directories: {
         output: tempOutputDir
